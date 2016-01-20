@@ -4,7 +4,7 @@ Test task
 ---------------------
 
 Use cases:
-Add news
-Edit news
-Remove news
-View news
+Add news.
+Edit news.
+Remove news.
+View news.
