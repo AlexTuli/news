@@ -54,4 +54,7 @@
     <div class="blockRight">
 
     </div>
+<div class="buttons">
+    <html:submit><bean:message key="label.news.button.save"/></html:submit>
+</div>
 </div>

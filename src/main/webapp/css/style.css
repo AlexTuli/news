@@ -69,6 +69,10 @@ div.blockRight {
     width: 80%;
 }
 
+div.buttons {
+    clear: both;
+}
+
 div.footer {
     font-size: medium;
     border: 2px solid black;
