@@ -3,5 +3,5 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <h3>
-    <bean:message key="label.news.copyright"/>
+    <bean:message key="label.news.footer.copyright"/>
 </h3>
