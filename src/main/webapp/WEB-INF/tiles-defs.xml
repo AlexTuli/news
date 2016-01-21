@@ -6,7 +6,8 @@
 
 <tiles-definitions>
 
-    <definition name="news-template" template="/pages/tiles/common-layout.jsp">
+    <definition name="news-template" path="/pages/tiles/common-layout.jsp">
+        <put name="body" type="page"/>
         <put name="footer" value="/pages/tiles/template/footer.jsp"/>
     </definition>
 

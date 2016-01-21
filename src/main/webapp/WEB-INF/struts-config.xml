@@ -10,10 +10,16 @@
                    type="com.epam.alex.form.NewsForm"/>
     </form-beans>
 
+    <action-mappings>
+        <action path="/editNews"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/pages/news/edit-news.jsp"/>
+    </action-mappings>
+
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
 
     <!-- Spring Struts plugin -->
-    
+
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"
                       value="/WEB-INF/tiles-defs.xml"/>

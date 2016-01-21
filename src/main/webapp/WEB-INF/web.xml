@@ -25,6 +25,6 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>page.jsp</welcome-file>
+        <welcome-file>/pages/news/edit-news.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

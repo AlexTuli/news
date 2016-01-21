@@ -6,8 +6,10 @@
     <title><tiles:insert attribute="title"/></title>
 </head>
 <body>
+
 <tiles:insert attribute="body"/>
 
 <tiles:insert attribute="footer"/>
+
 </body>
 </html>
