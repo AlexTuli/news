@@ -43,6 +43,13 @@ div.body {
     float: right;
 }
 
+div.error {
+    clear: both;
+    margin: 5px;
+    text-align: center;
+    color: red;
+}
+
 div.block {
     clear: both;
     margin: 10px;
