@@ -5,5 +5,9 @@
         "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
 
 <tiles-definitions>
-    <definition name="example"/>
+
+    <definition name="news-template" template="/pages/tiles/common-layout.jsp">
+        <put name="footer" value="/pages/tiles/template/footer.jsp"/>
+    </definition>
+
 </tiles-definitions>
