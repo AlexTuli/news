@@ -13,6 +13,12 @@
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
 
     <!-- Spring Struts plugin -->
+    
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config"
+                      value="/WEB-INF/tiles-defs.xml"/>
+    </plug-in>
+    
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
         <set-property property="contextConfigLocation"
                       value="/WEB-INF/classes/SpringBeans.xml" />
