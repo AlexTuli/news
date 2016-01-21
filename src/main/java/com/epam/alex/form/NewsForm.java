@@ -3,10 +3,6 @@ package com.epam.alex.form;
 import com.epam.alex.model.News;
 import org.apache.struts.validator.ValidatorForm;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 /**
  * Created on 1/20/2016.
  *

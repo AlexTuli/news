@@ -2,12 +2,15 @@
         "-//Apache Software Foundation
        //DTD Commons Validator Rules Configuration 1.3.0//EN"
         "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
-<!--todo add property with error messages-->
 
 <form-validation>
     <formset>
+
         <form name="newsForm">
             <field property="title" depends="required, maxlength">
+
+                <msg key="err.news.title.required" name="required"/>
+                <msg key="err.news.title.length" name="maxlength"/>
 
                 <arg name="maxlength" key="${var:maxlength}" resource="false" position="0"/>
 
@@ -15,8 +18,13 @@
                     <var-name>maxlength</var-name>
                     <var-value>100</var-value>
                 </var>
+
             </field>
+
             <field property="brief" depends="required, maxlength">
+
+                <msg key="err.news.brief.required" name="required"/>
+                <msg key="err.news.brief.length" name="maxlength"/>
 
                 <arg name="maxlength" key="${var:maxlength}" resource="false" position="0"/>
 
@@ -24,8 +32,13 @@
                     <var-name>maxlength</var-name>
                     <var-value>500</var-value>
                 </var>
+
             </field>
+
             <field property="content" depends="required, maxlength">
+
+                <msg key="err.news.content.required" name="required"/>
+                <msg key="err.news.content.length" name="maxlength"/>
 
                 <arg name="maxlength" key="${maxlength}" resource="false" position="0"/>
 
@@ -33,8 +46,14 @@
                     <var-name>maxlenght</var-name>
                     <var-value>2048</var-value>
                 </var>
+
             </field>
+
             <field property="dateOfCreation" depends="required, maxlength, mask">
+
+                <msg key="err.news.dateOfCreation.required" name="required"/>
+                <msg key="err.news.dateOfCreation.invalid" name="mask"/>
+                <msg key="err.news.dateOfCreation.length" name="maxlength"/>
 
                 <arg name="maxlength" key="${var:maxlength}" resource="false" position="0"/>
 
@@ -46,10 +65,9 @@
                     <var-name>mask</var-name>
                     <var-value>^[0-3]\d\/((0[0-9])|(1[0-2]))\/[1-2]\d{3}$</var-value>
                 </var>
+
             </field>
+
         </form>
-
-
-
     </formset>
 </form-validation>
