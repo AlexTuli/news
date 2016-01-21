@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title></title>
+    <title><tiles:insert attribute="title"/></title>
 </head>
 <body>
 <tiles:insert attribute="body"/>
