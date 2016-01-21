@@ -10,9 +10,18 @@
 </head>
 <body>
 
-<tiles:insert attribute="header"/>
-<tiles:insert attribute="menu"/>
-<tiles:insert attribute="footer"/>
+<div >
+    <tiles:insert attribute="header"/>
+</div>
+<div>
+    <tiles:insert attribute="menu"/>
+</div>
+<div>
+    <tiles:insert attribute="body"/>
+</div>
+<div>
+    <tiles:insert attribute="footer"/>
+</div>
 
 </body>
 </html>

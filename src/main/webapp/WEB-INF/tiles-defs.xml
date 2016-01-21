@@ -11,6 +11,10 @@
         <put name="menu" value="/pages/tiles/template/menu.jsp"/>
         <put name="footer" value="/pages/tiles/template/footer.jsp"/>
     </definition>
+    <definition name="editNews" extends="newsTemplate">
+        <put name="body" value="/pages/news/body/news-edit-body.jsp"/>
+        <put name="title" value="Edit news"/>
+    </definition>
 
 </tiles-definitions>
 
