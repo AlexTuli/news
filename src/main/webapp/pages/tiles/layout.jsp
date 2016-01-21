@@ -21,6 +21,5 @@
 
     <tiles:insert attribute="footer"/>
 
-
 </body>
 </html>
