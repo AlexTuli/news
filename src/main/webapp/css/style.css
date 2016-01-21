@@ -3,6 +3,7 @@ div.header {
     font-family: Tahoma, serif;
     margin: 10px;
     padding: 10px;
+    clear: both;
 }
 
 .header-title {
@@ -11,6 +12,40 @@ div.header {
 
 p.header2 {
     float: right;
+}
+
+div.menu {
+    background-color: lightskyblue;
+    margin: 10px;
+    width: 15%;
+    float: left;
+}
+
+p.middle {
+    background-color: darkgrey;
+    margin-left: 15px;
+    text-align: center;
+}
+
+ul.list {
+
+    background-color: whitesmoke;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+div.body {
+    width: 80%;
+    border: 2px solid gray;
+    float: right;
+}
+
+div.footer {
+    font-size: medium;
+    border: 2px solid black;
+    clear:both;
+    text-align:center;
+    padding:5px;
 }
 
 .clearfix:after {

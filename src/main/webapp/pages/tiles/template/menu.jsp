@@ -1,7 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 
-<p>News</p>
-<ul>
-    <li><a>News list</a></li>
-    <li><a>Add news</a></li>
-</ul>
+<div class="menu clearfix">
+
+    <p class="middle"><bean:message key="label.news.menu.title"/></p>
+
+    <ul class="list">
+        <li><a><bean:message key="label.news.menu.listNews"/></a></li>
+        <li><a><bean:message key="label.news.menu.listNews"/></a></li>
+    </ul>
+
+</div>

@@ -15,12 +15,12 @@
 
     <tiles:insert attribute="menu"/>
 
-<div>
+<div class="body clearfix">
     <tiles:insert attribute="body"/>
 </div>
-<div>
+
     <tiles:insert attribute="footer"/>
-</div>
+
 
 </body>
 </html>
