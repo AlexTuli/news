@@ -6,8 +6,8 @@
     <p class="middle"><bean:message key="label.news.menu.title"/></p>
 
     <ul class="list">
-        <li><a><bean:message key="label.news.menu.listNews"/></a></li>
-        <li><a><bean:message key="label.news.menu.listNews"/></a></li>
+        <li><a><bean:message key="label.news.menu.addNews"/></a></li>
+        <li><a href="${pageContext.request.contextPath}/viewNews.do"><bean:message key="label.news.menu.listNews"/></a></li>
     </ul>
 
 </div>

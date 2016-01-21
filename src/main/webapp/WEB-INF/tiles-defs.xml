@@ -15,6 +15,10 @@
         <put name="body" value="/pages/news/body/news-edit-body.jsp"/>
         <put name="title" value="Edit news"/>
     </definition>
+    <definition name="viewNews" extends="newsTemplate">
+        <put name="title" value="News view"/>
+        <put name="body" value="/pages/news/body/news-body-view.jsp"/>
+    </definition>
 
 </tiles-definitions>
 

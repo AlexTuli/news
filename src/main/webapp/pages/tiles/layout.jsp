@@ -10,16 +10,12 @@
     <title><tiles:getAsString name="title" ignore="true"/></title>
 </head>
 <body>
-
     <tiles:insert attribute="header"/>
-
     <tiles:insert attribute="menu"/>
-
 <div class="body clearfix">
+    <p> News >> <tiles:getAsString name="title" ignore="true"/></p>
     <tiles:insert attribute="body"/>
 </div>
-
     <tiles:insert attribute="footer"/>
-
 </body>
 </html>

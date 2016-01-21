@@ -43,6 +43,25 @@ div.body {
     float: right;
 }
 
+div.block {
+    clear: both;
+    margin: 10px;
+}
+
+div.blockLeft {
+    float: left;
+    min-width: 15px;
+    margin: 10px;
+    width: 10%;
+}
+
+div.blockRight {
+    float: right;
+    min-width: 30px;
+    margin: 10px;
+    width: 80%;
+}
+
 div.footer {
     font-size: medium;
     border: 2px solid black;
