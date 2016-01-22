@@ -13,7 +13,7 @@
     <action-mappings>
         <action path="/welcome"
                 type="org.apache.struts.actions.ForwardAction"
-                parameter="/pages/news/view-news.jsp"/>
+                parameter="/pages/news/view-list-news.jsp"/>
         <action path="/saveNews"
                 type="com.epam.alex.action.SaveNews"
                 name="newsForm"

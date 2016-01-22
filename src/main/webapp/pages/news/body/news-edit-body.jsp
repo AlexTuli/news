@@ -2,6 +2,7 @@
 <%@ taglib  uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+
 <%--<bean:define id="inputTitle" property="newsMessage.title" name="newsForm"/>--%>
 <%--<bean:define id="inputBrief" property="newsMessage.brief" name="newsForm"/>--%>
 <%--<bean:define id="inputContent" property="newsMessage.content" name="newsForm"/>--%>

@@ -69,6 +69,12 @@ div.blockRight {
     width: 80%;
 }
 
+div.newsBlock {
+    clear: both;
+    margin: 10px;
+    border: solid black 2px;
+}
+
 div.buttons {
     clear: both;
 }
