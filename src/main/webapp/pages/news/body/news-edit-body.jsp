@@ -10,10 +10,6 @@
 <html:form action="/saveNews">
     <div class="error"><html:errors/></div>
 <div class="block">
-    <div class="error">
-        <html:messages id="err.title" property="err.title.length"/>
-        <html:messages id="err.title" property="err.news.title.required"/>
-    </div>
     <div class="blockLeft">
         <bean:message key="label.news.body.view.newsTitle"/>
     </div>
@@ -23,11 +19,6 @@
 </div>
 
 <div class="block">
-    <div class="error">
-        <html:messages id="err.dateOfCreation" property="err.news.dateOfCreation.invalid"/>
-        <html:messages id="err.dateOfCreation" property="err.news.dateOfCreation.required"/>
-        <html:messages id="err.dateOfCreation" property="err.news.dateOfCreation.length"/>
-    </div>
     <div class="blockLeft">
         <bean:message key="label.news.body.view.newsDate"/>
     </div>
@@ -36,10 +27,6 @@
     </div>
 </div>
 <div class="block">
-    <div class="error">
-        <html:messages id="err.brief" property="err.news.brief.length"/>
-        <html:messages id="err.brief" property="err.news.brief.required"/>
-    </div>
     <div class="blockLeft">
         <bean:message key="label.news.body.view.brief"/>
     </div>
@@ -48,10 +35,6 @@
     </div>
 </div>
 <div class="block">
-    <div class="error">
-        <html:messages id="err.content" property="err.news.content.length"/>
-        <html:messages id="err.content" property="err.news.content.required"/>
-    </div>
     <div class="blockLeft">
         <bean:message key="label.news.body.view.content"/>
     </div>

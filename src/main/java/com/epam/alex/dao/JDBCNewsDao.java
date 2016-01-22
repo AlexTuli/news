@@ -58,12 +58,17 @@ public class JDBCNewsDao implements NewsDao {
         return null;
     }
 
+    /**
+     * Save news to DB
+     * @param news News
+     */
     @Override
     public void save(News news) {
         log.info("Start to save news.");
         getConnection();
         PreparedStatement ps = null;
         try {
+            connection.setAutoCommit(false);
             if (news.getId() == null) {
                 ps = connection.prepareStatement(INSERT_QUERY);
             } else {
@@ -74,6 +79,11 @@ public class JDBCNewsDao implements NewsDao {
             ps.executeUpdate();
 
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+                connection.setAutoCommit(true);
+            } catch (SQLException ignored) {
+            }
             log.error("Can't execute save in DAO.");
             throw new DaoException(e);
         } finally {
@@ -81,6 +91,8 @@ public class JDBCNewsDao implements NewsDao {
                 if (ps != null) {
                     ps.close();
                 }
+                connection.commit();
+                connection.setAutoCommit(true);
                 connection.close();
                 log.debug("Connection was closed.");
             } catch (SQLException e) {

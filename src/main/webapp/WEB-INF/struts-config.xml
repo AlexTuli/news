@@ -20,6 +20,7 @@
                 validate="true"
                 input="/editNews.do">
             <forward name="success" path="/welcome.do"/>
+            <forward name="failure" path="/editNews.do"/>
         </action>
         <action path="/editNews"
                 type="com.epam.alex.action.EditNews"

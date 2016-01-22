@@ -165,7 +165,7 @@
             <artifactId>ojdbc</artifactId>
             <version>14</version>
             <scope>system</scope>
-            <systemPath>${driverdir}/ojdbc6.jar</systemPath>
+            <systemPath>${basedir}/lib/ojdbc6.jar</systemPath>
         </dependency>
     </dependencies>
 
