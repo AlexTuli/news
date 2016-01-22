@@ -5,7 +5,7 @@ import com.epam.alex.dao.NewsDao;
 import com.epam.alex.exceptions.UtilException;
 import com.epam.alex.form.NewsForm;
 import com.epam.alex.model.News;
-import com.epam.alex.util.Utilites;
+import com.epam.alex.util.Utilities;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -14,7 +14,6 @@ import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
 
 /**
  * Created on 21.01.2016.
@@ -36,7 +35,7 @@ public class SaveNews extends ActionSupport {
         news.setBrief(newsForm.getBrief());
         news.setTitle(newsForm.getTitle());
         try {
-            news.setDateOfCreation(Utilites.getCalendarFromString(newsForm.getDateOfCreation()));
+            news.setDateOfCreation(Utilities.getCalendarFromString(newsForm.getDateOfCreation()));
         } catch (UtilException e) {
             return mapping.findForward("failure");
         }

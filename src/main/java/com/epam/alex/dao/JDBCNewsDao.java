@@ -2,12 +2,12 @@ package com.epam.alex.dao;
 
 import com.epam.alex.exceptions.DaoException;
 import com.epam.alex.model.News;
+import com.epam.alex.util.Utilities;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -22,8 +22,9 @@ public class JDBCNewsDao implements NewsDao {
     private static final String USER_NAME = "alex";
     private static final String PASSWORD = "qwerty";
     private static final String URL = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, ?)";
+    private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, ?);";
     private static final String UPDATE_QUERY = "";
+    private static final String READ_ALL_QUERY = "select (TITLE, BRIEF, POST_CONTENT, CREATION_DATE, ID) from NEWS;";
     private Connection connection;
 
 
@@ -49,12 +50,24 @@ public class JDBCNewsDao implements NewsDao {
     }
 
     @Override
-    public List<News> getList() {
-        return null;
+    public List<News> readAll() {
+        log.info("Start to readAll news");
+        List<News> result;
+        getConnection();
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(READ_ALL_QUERY);
+            ResultSet resultSet = ps.executeQuery();
+            result = parseResultSet(resultSet);
+        } catch (SQLException e) {
+            log.error("Can't create read all query");
+            throw new DaoException(e);
+        }
+        return result;
     }
 
     @Override
-    public News getById(News news) {
+    public News readById(News news) {
         return null;
     }
 
@@ -111,6 +124,34 @@ public class JDBCNewsDao implements NewsDao {
         return ps;
     }
 
+    /**
+     * Parse result set and return List of news
+     * @param rs Result Set
+     * @return List of News
+     */
+    private List<News> parseResultSet (ResultSet rs) {
+        List<News> result = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                News news = new News();
+                String title = rs.getString(1);
+                news.setTitle(title);
+                String brief = rs.getString(2);
+                news.setBrief(brief);
+                String content = rs.getString(3);
+                news.setContent(content);
+                String date = rs.getString(4);
+                news.setDateOfCreation(Utilities.getCalendarFromString(date));
+                Integer id = rs.getInt(5);
+                news.setId(id);
+                result.add(news);
+            }
+        } catch (SQLException e) {
+            log.error("Can't parse result set");
+            throw new DaoException(e);
+        }
+        return result;
+    }
 
     @Override
     public void delete(News news) {

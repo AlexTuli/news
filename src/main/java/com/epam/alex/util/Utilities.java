@@ -13,9 +13,9 @@ import java.util.Date;
  *
  * @author Bocharnikov Alexander
  */
-public final class Utilites {
+public final class Utilities {
 
-    private static final Logger log = Logger.getLogger(Utilites.class);
+    private static final Logger log = Logger.getLogger(Utilities.class);
 
     public static Calendar getCalendarFromString (String date) {
         Calendar result = Calendar.getInstance();

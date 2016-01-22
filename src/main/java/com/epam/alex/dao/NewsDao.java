@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface NewsDao {
 
-    List<News> getList ();
+    List<News> readAll();
 
-    News getById (News news);
+    News readById(News news);
 
     void save (News news);
 
