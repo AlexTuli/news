@@ -1,7 +1,10 @@
 package com.epam.alex.form;
 
 import com.epam.alex.model.News;
+import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created on 1/20/2016.
@@ -64,5 +67,14 @@ public class NewsForm extends ValidatorForm{
 
     public void setDateOfCreation(String dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
+    }
+
+    @Override
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        title = null;
+        brief = null;
+        content = null;
+        id = null;
+        dateOfCreation = null;
     }
 }
