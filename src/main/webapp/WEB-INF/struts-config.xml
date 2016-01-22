@@ -22,7 +22,9 @@
         <action path="/editNews"
                 type="org.apache.struts.actions.ForwardAction"
                 parameter="/pages/news/edit-news.jsp"/>
-
+        <action path="/viewNews"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/pages/news/view-news.jsp"/>
     </action-mappings>
 
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
