@@ -16,9 +16,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EditNews extends ActionSupport {
 
+    private static final String SUCCESS = "success";
+
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         NewsForm newsForm = (NewsForm) form;
-        return mapping.findForward("success");
+        return mapping.findForward(SUCCESS);
     }
 }

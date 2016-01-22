@@ -29,6 +29,11 @@
             <forward name="success"
                      path="/pages/news/edit-news.jsp"/>
         </action>
+        <action path="/viewListNews"
+                type="com.epam.alex.action.ViewListNews">
+            <forward name="success" path="/pages/news/view-list-news.jsp"/>
+            <forward name="failure" path="/editNews.do"/>
+        </action>
 
         <action path="/viewNews"
                 type="org.apache.struts.actions.ForwardAction"

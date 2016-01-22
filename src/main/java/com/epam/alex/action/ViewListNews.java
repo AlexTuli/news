@@ -2,7 +2,9 @@ package com.epam.alex.action;
 
 import com.epam.alex.dao.JDBCNewsDao;
 import com.epam.alex.dao.NewsDao;
+import com.epam.alex.exceptions.DaoException;
 import com.epam.alex.model.News;
+import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -19,13 +21,23 @@ import java.util.List;
  */
 public class ViewListNews extends ActionSupport {
 
+    private static final Logger log = Logger.getLogger(ViewListNews.class);
+    private static final String FAILURE = "failure";
+    private static final String SUCCESS = "success";
+
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         NewsDao newsDao = new JDBCNewsDao();
-        List<News> newsList = newsDao.readAll();
+        List<News> newsList;
+        try {
+            newsList = newsDao.readAll();
+        } catch (DaoException e) {
+            log.error("Fail in ViewListNews action");
+            return mapping.findForward(FAILURE);
+        }
         request.setAttribute("newsList", newsList);
 
-        return mapping.findForward("success");
+        return mapping.findForward(SUCCESS);
     }
 }

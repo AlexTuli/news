@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SaveNews extends ActionSupport {
 
     private static final Logger log = Logger.getLogger(SaveNews.class);
+    private static final String SUCCESS = "success";
+    private static final String FAILURE = "failure";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -37,12 +39,13 @@ public class SaveNews extends ActionSupport {
         try {
             news.setDateOfCreation(Utilities.getCalendarFromString(newsForm.getDateOfCreation()));
         } catch (UtilException e) {
-            return mapping.findForward("failure");
+            log.error("Fail to save news");
+            return mapping.findForward(FAILURE);
         }
 
         NewsDao newsDao = new JDBCNewsDao();
         newsDao.save(news);
 
-        return mapping.findForward("success");
+        return mapping.findForward(SUCCESS);
     }
 }

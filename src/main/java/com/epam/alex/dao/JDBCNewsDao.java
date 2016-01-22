@@ -22,9 +22,9 @@ public class JDBCNewsDao implements NewsDao {
     private static final String USER_NAME = "alex";
     private static final String PASSWORD = "qwerty";
     private static final String URL = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, ?);";
+    private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, ?)";
     private static final String UPDATE_QUERY = "";
-    private static final String READ_ALL_QUERY = "select (TITLE, BRIEF, POST_CONTENT, CREATION_DATE, ID) from NEWS;";
+    private static final String READ_ALL_QUERY = "select (TITLE, BRIEF, POST_CONTENT, CREATION_DATE, ID) from NEWS";
     private Connection connection;
 
 
