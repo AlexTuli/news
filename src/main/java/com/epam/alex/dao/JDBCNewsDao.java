@@ -82,7 +82,7 @@ public class JDBCNewsDao implements NewsDao {
                     ps.close();
                 }
                 connection.close();
-
+                log.debug("Connection was closed.");
             } catch (SQLException e) {
                 log.error("Can't close connection");
             }
@@ -94,7 +94,7 @@ public class JDBCNewsDao implements NewsDao {
         ps.setString(1, news.getTitle());
         ps.setString(2, news.getBrief());
         ps.setString(3, news.getContent());
-        String date = String.format("%td", news.getDateOfCreation());
+        String date = String.format("%tD", news.getDateOfCreation());
         ps.setString(4, date);
         return ps;
     }

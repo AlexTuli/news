@@ -1,5 +1,6 @@
 package com.epam.alex.action;
 
+import com.epam.alex.form.NewsForm;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -9,12 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by Alexander on 21.01.2016.
+ * Created on 21.01.2016.
+ *
+ *@author Bocharnikov Alexander
+ *
  */
 public class SaveNews extends ActionSupport {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        NewsForm newsForm = (NewsForm) form;
+
         return mapping.findForward("success");
     }
 }
