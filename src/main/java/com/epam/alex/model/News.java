@@ -1,5 +1,6 @@
 package com.epam.alex.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -12,14 +13,14 @@ public class News {
     private String title;
     private String brief;
     private String content;
-    private int id;
-    private Date dateOfCreation;
+    private Integer id;
+    private Calendar dateOfCreation;
 
     public News() {
 
     }
 
-    public News(String title, String brief, String content, int id, Date dateOfCreation) {
+    public News(String title, String brief, String content, int id, Calendar dateOfCreation) {
         this.title = title;
         this.brief = brief;
         this.content = content;
@@ -51,19 +52,19 @@ public class News {
         this.content = content;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Date getDateOfCreation() {
+    public Calendar getDateOfCreation() {
         return dateOfCreation;
     }
 
-    public void setDateOfCreation(Date dateOfCreation) {
+    public void setDateOfCreation(Calendar dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }
 
