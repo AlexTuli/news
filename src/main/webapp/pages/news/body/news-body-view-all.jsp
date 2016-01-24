@@ -7,7 +7,11 @@
 
 <c:forEach items="${newsList}" var="news">
     <div class="newsBlock">
-        <p>News title: <c:out value="news.title"/></p>
+        <div class="title"><c:out value="news.title"/></div>
+        <div class="date"><c:out value="news.dateOfCreation"/></div>
+        <div class="post-content"><c:out value="news.content"/></div>
+        <%--todo have to send id of news with this links--%>
+        <div class="links"><a href="<c:url value="/viewNews.do"/>">view</a><a href="<c:url value="/editNews.do"/>">edit</a></div>
     </div>
 </c:forEach>
 

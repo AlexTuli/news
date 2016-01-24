@@ -75,6 +75,26 @@ div.newsBlock {
     border: solid black 2px;
 }
 
+div.title {
+    clear: left;
+    float: left;
+    font-weight: bold;
+}
+
+div.date {
+    clear: right;
+    float: right;
+
+}
+
+div.post-content {
+    clear: both;
+}
+
+div.links {
+    float: right;
+}
+
 div.buttons {
     clear: both;
 }
