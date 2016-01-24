@@ -17,16 +17,23 @@ import java.util.List;
  */
 public class JDBCNewsDao implements NewsDao {
 
+
     private static final Logger log = Logger.getLogger(JDBCNewsDao.class);
     private static final String ORACLE_DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
     private static final String USER_NAME = "alex";
     private static final String PASSWORD = "qwerty";
     private static final String URL = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, ?)";
-    private static final String UPDATE_QUERY = "";
-    private static final String READ_ALL_QUERY = "select (TITLE, BRIEF, POST_CONTENT, CREATION_DATE, ID) from NEWS";
+    private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, to_date (? , 'MM/dd/yyyy'))";
+    private static final String UPDATE_QUERY = "UPDATE NEWS SET\n" +
+            "TITLE = ?,\n" +
+            "BRIEF = ?,\n" +
+            "POST_CONTENT = ?,\n" +
+            "CREATION_DATE = (to_date (? , 'MM/dd/yyyy'))\n" +
+            "where ID = ?;";
+    private static final String READ_ALL_QUERY = "select * from NEWS;";
+    public static final String READ_BY_ID_QUERY = "select * from NEWS where ID = ?;";
     private Connection connection;
-
+//
 
     public JDBCNewsDao () {
         try {
@@ -54,21 +61,45 @@ public class JDBCNewsDao implements NewsDao {
         log.info("Start to readAll news");
         List<News> result;
         getConnection();
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try {
             ps = connection.prepareStatement(READ_ALL_QUERY);
             ResultSet resultSet = ps.executeQuery();
+            log.debug("Query was executed");
             result = parseResultSet(resultSet);
         } catch (SQLException e) {
             log.error("Can't create read all query");
             throw new DaoException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ignored) {
+            }
         }
         return result;
     }
 
+    // TODO: 24.01.2016 CHECK THIS
     @Override
     public News readById(News news) {
-        return null;
+        log.info("Start to read news by ID");
+        getConnection();
+        PreparedStatement ps;
+        News result;
+        try {
+            log.debug("Prepare statement");
+            ps = connection.prepareStatement(READ_BY_ID_QUERY);
+            ps.setInt(1, news.getId());
+            log.debug("Execute query");
+            ResultSet resultSet = ps.executeQuery();
+            log.debug("Parse result set");
+            List<News> newses = parseResultSet(resultSet);
+            result = newses.get(0);
+        } catch (SQLException e) {
+            log.error("Can't read by ID");
+            throw new DaoException(e);
+        }
+        return result;
     }
 
     /**
@@ -85,8 +116,9 @@ public class JDBCNewsDao implements NewsDao {
             if (news.getId() == null) {
                 ps = connection.prepareStatement(INSERT_QUERY);
             } else {
-                // NOT IMPLEMENTED YET
+                // TODO: 24.01.2016 CHECK THIS
                 ps = connection.prepareStatement(UPDATE_QUERY);
+                ps.setInt(5, news.getId());
             }
             ps = fillSavePreparedStatement(news, ps);
             ps.executeUpdate();
@@ -134,15 +166,15 @@ public class JDBCNewsDao implements NewsDao {
         try {
             while (rs.next()) {
                 News news = new News();
-                String title = rs.getString(1);
+                Integer id = rs.getInt(1);
+                String title = rs.getString(2);
                 news.setTitle(title);
-                String brief = rs.getString(2);
+                String brief = rs.getString(3);
                 news.setBrief(brief);
-                String content = rs.getString(3);
+                String content = rs.getString(4);
                 news.setContent(content);
-                String date = rs.getString(4);
+                String date = rs.getString(5);
                 news.setDateOfCreation(Utilities.getCalendarFromString(date));
-                Integer id = rs.getInt(5);
                 news.setId(id);
                 result.add(news);
             }
