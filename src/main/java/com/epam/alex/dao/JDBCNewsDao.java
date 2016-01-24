@@ -32,8 +32,8 @@ public class JDBCNewsDao implements NewsDao {
             "where ID = ?;";
     private static final String READ_ALL_QUERY = "select * from NEWS;";
     public static final String READ_BY_ID_QUERY = "select * from NEWS where ID = ?;";
+    public static final String DELETE_QUERY = "delete NEWS where ID = ?;";
     private Connection connection;
-//
 
     public JDBCNewsDao () {
         try {
@@ -45,6 +45,10 @@ public class JDBCNewsDao implements NewsDao {
         log.info(this.getClass().getName() + " was created.");
     }
 
+    /**
+     * Get connection to DB
+     * @throws DaoException
+     */
     private void getConnection () {
         try {
             connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
@@ -56,6 +60,69 @@ public class JDBCNewsDao implements NewsDao {
         log.info("Connection " + connection + " was created.");
     }
 
+    /**
+     * Close connection to DB
+     * @throws DaoException
+     */
+    private void closeConnection () {
+        try {
+            log.debug(connection + " will be closed");
+            connection.close();
+            log.debug("Connection is closed");
+        } catch (SQLException e) {
+            log.error("Can't close connection");
+            throw new DaoException(e);
+        }
+    }
+
+    /**
+     * Start transaction
+     * @throws DaoException
+     */
+    private void startTransaction () {
+        try {
+            connection.setAutoCommit(false);
+        } catch (SQLException e) {
+            log.error("Can't start transaction");
+            throw new DaoException(e);
+        }
+    }
+
+    /**
+     * Rollback changes in transaction and close connection
+     * @throws DaoException
+     */
+    private void rollback () {
+        try {
+            connection.rollback();
+            connection.setAutoCommit(true);
+            closeConnection();
+        } catch (SQLException e) {
+            log.error("Can't rollback");
+            throw new DaoException(e);
+        }
+    }
+
+    /**
+     * Commit changes in DB and close connection
+     * @throws DaoException
+     */
+    private void commit() {
+        try {
+            connection.commit();
+            connection.setAutoCommit(true);
+            closeConnection();
+        } catch (SQLException e) {
+            log.error("Can't commit");
+            throw new DaoException(e);
+        }
+    }
+
+    /**
+     * Read all rows from NEWS table
+     * @return List of News
+     * @throws DaoException
+     */
     @Override
     public List<News> readAll() {
         log.info("Start to readAll news");
@@ -98,6 +165,8 @@ public class JDBCNewsDao implements NewsDao {
         } catch (SQLException e) {
             log.error("Can't read by ID");
             throw new DaoException(e);
+        } finally {
+            closeConnection();
         }
         return result;
     }
@@ -105,14 +174,15 @@ public class JDBCNewsDao implements NewsDao {
     /**
      * Save news to DB
      * @param news News
+     * @throws DaoException
      */
     @Override
     public void save(News news) {
         log.info("Start to save news.");
         getConnection();
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try {
-            connection.setAutoCommit(false);
+            startTransaction();
             if (news.getId() == null) {
                 ps = connection.prepareStatement(INSERT_QUERY);
             } else {
@@ -122,27 +192,12 @@ public class JDBCNewsDao implements NewsDao {
             }
             ps = fillSavePreparedStatement(news, ps);
             ps.executeUpdate();
-
         } catch (SQLException e) {
-            try {
-                connection.rollback();
-                connection.setAutoCommit(true);
-            } catch (SQLException ignored) {
-            }
+            rollback();
             log.error("Can't execute save in DAO.");
             throw new DaoException(e);
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                connection.commit();
-                connection.setAutoCommit(true);
-                connection.close();
-                log.debug("Connection was closed.");
-            } catch (SQLException e) {
-                log.error("Can't close connection");
-            }
+            commit();
             log.info("News saved successfully!");
         }
     }
@@ -151,7 +206,7 @@ public class JDBCNewsDao implements NewsDao {
         ps.setString(1, news.getTitle());
         ps.setString(2, news.getBrief());
         ps.setString(3, news.getContent());
-        String date = String.format("%tD", news.getDateOfCreation());
+        String date = String.format("%tD", news.getDateOfCreation()); // TODO: 24.01.2016 Check this
         ps.setString(4, date);
         return ps;
     }
@@ -160,6 +215,7 @@ public class JDBCNewsDao implements NewsDao {
      * Parse result set and return List of news
      * @param rs Result Set
      * @return List of News
+     * @throws DaoException
      */
     private List<News> parseResultSet (ResultSet rs) {
         List<News> result = new ArrayList<>();
@@ -185,8 +241,28 @@ public class JDBCNewsDao implements NewsDao {
         return result;
     }
 
+    /**
+     * Delete row from DB
+     * @param news News that will be deleted
+     * @throws DaoException
+     */
     @Override
     public void delete(News news) {
+        getConnection();
+        PreparedStatement ps;
+        try {
+            startTransaction();
+            ps = connection.prepareStatement(DELETE_QUERY);
+            ps.setInt(1, news.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            rollback();
+            log.error("Can't execute delete query");
+            throw new DaoException(e);
+        } finally {
+            commit();
+        }
+        log.info("Delete successful!");
 
     }
 }
