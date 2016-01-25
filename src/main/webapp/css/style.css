@@ -38,6 +38,7 @@ ul.list {
 }
 
 div.body {
+    margin: 10px;
     width: 80%;
     border: 2px solid gray;
     float: right;
@@ -67,6 +68,7 @@ div.blockRight {
     min-width: 30px;
     margin: 10px;
     width: 80%;
+    word-wrap: break-word;
 }
 
 div.newsBlock {
@@ -76,12 +78,14 @@ div.newsBlock {
 }
 
 div.title {
+    margin: 5px;
     clear: left;
     float: left;
     font-weight: bold;
 }
 
 div.date {
+    margin: 5px;
     clear: right;
     float: right;
 
@@ -89,18 +93,23 @@ div.date {
 
 div.post-content {
     clear: both;
+    margin: 5px;
 }
 
 div.links {
     float: right;
+    clear: both;
 }
 
 div.buttons {
     clear: both;
+    margin: 0 auto;
+    display: table;
 }
 
 div.footer {
     font-size: medium;
+    margin: 10px;
     border: 2px solid black;
     clear:both;
     text-align:center;

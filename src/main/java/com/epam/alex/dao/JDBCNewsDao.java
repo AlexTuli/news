@@ -24,15 +24,15 @@ public class JDBCNewsDao implements NewsDao {
     private static final String PASSWORD = "qwerty";
     private static final String URL = "jdbc:oracle:thin:@//localhost:1521/XE";
     private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, to_date (? , 'MM/dd/yyyy'))";
-    private static final String UPDATE_QUERY = "UPDATE NEWS SET\n" +
+    private static final String UPDATE_QUERY = "update NEWS SET\n" +
             "TITLE = ?,\n" +
             "BRIEF = ?,\n" +
             "POST_CONTENT = ?,\n" +
             "CREATION_DATE = (to_date (? , 'MM/dd/yyyy'))\n" +
-            "where ID = ?;";
-    private static final String READ_ALL_QUERY = "select * from NEWS;";
-    public static final String READ_BY_ID_QUERY = "select * from NEWS where ID = ?;";
-    public static final String DELETE_QUERY = "delete NEWS where ID = ?;";
+            "where ID = ?";
+    private static final String READ_ALL_QUERY = "select * from NEWS";
+    public static final String READ_BY_ID_QUERY = "select * from NEWS where ID = ?";
+    public static final String DELETE_QUERY = "delete NEWS where ID = ?";
     private Connection connection;
 
     public JDBCNewsDao () {
@@ -131,6 +131,7 @@ public class JDBCNewsDao implements NewsDao {
         PreparedStatement ps;
         try {
             ps = connection.prepareStatement(READ_ALL_QUERY);
+            log.debug("Start to execute query");
             ResultSet resultSet = ps.executeQuery();
             log.debug("Query was executed");
             result = parseResultSet(resultSet);
@@ -138,17 +139,14 @@ public class JDBCNewsDao implements NewsDao {
             log.error("Can't create read all query");
             throw new DaoException(e);
         } finally {
-            try {
-                connection.close();
-            } catch (SQLException ignored) {
-            }
+            closeConnection();
         }
         return result;
     }
 
     // TODO: 24.01.2016 CHECK THIS
     @Override
-    public News readById(News news) {
+    public News readById(Integer id) {
         log.info("Start to read news by ID");
         getConnection();
         PreparedStatement ps;
@@ -156,7 +154,7 @@ public class JDBCNewsDao implements NewsDao {
         try {
             log.debug("Prepare statement");
             ps = connection.prepareStatement(READ_BY_ID_QUERY);
-            ps.setInt(1, news.getId());
+            ps.setInt(1, id);
             log.debug("Execute query");
             ResultSet resultSet = ps.executeQuery();
             log.debug("Parse result set");
@@ -206,7 +204,7 @@ public class JDBCNewsDao implements NewsDao {
         ps.setString(1, news.getTitle());
         ps.setString(2, news.getBrief());
         ps.setString(3, news.getContent());
-        String date = String.format("%tD", news.getDateOfCreation()); // TODO: 24.01.2016 Check this
+        String date = String.format("%tm/%td/%tY", news.getDateOfCreation(), news.getDateOfCreation(), news.getDateOfCreation());
         ps.setString(4, date);
         return ps;
     }
@@ -230,7 +228,9 @@ public class JDBCNewsDao implements NewsDao {
                 String content = rs.getString(4);
                 news.setContent(content);
                 String date = rs.getString(5);
-                news.setDateOfCreation(Utilities.getCalendarFromString(date));
+                date = date.substring(0, 11);
+                date = date.replace('-', '/');
+                news.setDateOfCreation(Utilities.getCalendarFromString(date, "yyyy/MM/dd"));
                 news.setId(id);
                 result.add(news);
             }

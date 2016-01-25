@@ -13,7 +13,7 @@ public interface NewsDao {
 
     List<News> readAll();
 
-    News readById(News news);
+    News readById(Integer id);
 
     void save (News news);
 

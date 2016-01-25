@@ -17,10 +17,10 @@ public final class Utilities {
 
     private static final Logger log = Logger.getLogger(Utilities.class);
 
-    public static Calendar getCalendarFromString (String date) {
+    public static Calendar getCalendarFromString (String date, String stringFormat) {
         Calendar result = Calendar.getInstance();
         try {
-            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat format = new SimpleDateFormat(stringFormat);
             Date parse = format.parse(date);
             result.setTime(parse);
         } catch (ParseException e) {

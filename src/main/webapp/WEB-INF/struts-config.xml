@@ -7,19 +7,24 @@
 
     <form-beans>
         <form-bean name="newsForm"
-                   type="com.epam.alex.form.NewsForm"/>
+                   type="com.epam.alex.form.NewsForm">
+
+        </form-bean>
     </form-beans>
 
     <action-mappings>
         <action path="/welcome"
                 type="org.apache.struts.actions.ForwardAction"
                 parameter="/pages/news/view-list-news.jsp"/>
+        <action path="/addNews"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/pages/news/edit-news.jsp"/>
         <action path="/saveNews"
                 type="com.epam.alex.action.SaveNews"
                 name="newsForm"
                 validate="true"
                 input="/editNews.do">
-            <forward name="success" path="/welcome.do"/>
+            <forward name="success" path="/viewListNews.do"/>
             <forward name="failure" path="/editNews.do"/>
         </action>
         <action path="/editNews"
@@ -36,8 +41,9 @@
         </action>
 
         <action path="/viewNews"
-                type="org.apache.struts.actions.ForwardAction"
-                parameter="/pages/news/view-news.jsp"/>
+                type="com.epam.alex.action.ViewNews">
+            <forward name="success" path="/pages/news/view-news.jsp"/>
+        </action>
     </action-mappings>
 
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

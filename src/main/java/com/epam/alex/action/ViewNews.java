@@ -1,5 +1,8 @@
 package com.epam.alex.action;
 
+import com.epam.alex.dao.JDBCNewsDao;
+import com.epam.alex.dao.NewsDao;
+import com.epam.alex.model.News;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -9,24 +12,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created on 1/22/2016.
+ * Created on 1/25/2016.
  *
  * @author Bocharnikov Alexander
  */
-public class EditNews extends ActionSupport {
+public class ViewNews extends ActionSupport {
 
-    private static final String SUCCESS = "success";
     private static final String ID = "id";
+    private static final String SUCCESS = "success";
     private static final String NEWS = "news";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        String sId = request.getParameter(ID);
-//        NewsDao dao = new JDBCNewsDao();
-//        News news = dao.readById(Integer.parseInt(sId));
-//        request.setAttribute(NEWS, news);
-//        return mapping.findForward(SUCCESS);
-        ViewNews viewNews = new ViewNews();
-        return viewNews.execute(mapping, form, request, response);
+
+        String id = request.getParameter(ID);
+        NewsDao dao = new JDBCNewsDao();
+        News news = dao.readById(Integer.parseInt(id));
+        request.setAttribute(NEWS, news);
+        return mapping.findForward(SUCCESS);
     }
 }

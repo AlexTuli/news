@@ -64,6 +64,10 @@ public class News {
         return dateOfCreation;
     }
 
+    public String getDate() {
+        return String.format("%tm/%td/%tY", dateOfCreation, dateOfCreation, dateOfCreation);
+    }
+
     public void setDateOfCreation(Calendar dateOfCreation) {
         this.dateOfCreation = dateOfCreation;
     }

@@ -26,20 +26,26 @@ public class SaveNews extends ActionSupport {
     private static final Logger log = Logger.getLogger(SaveNews.class);
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
+    private static final String DATE_FORMAT = "MM/dd/yyyy";
+    private static final String ID = "id";
+    private static final String FAIL_TO_SAVE_NEWS = "Fail to save news";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         NewsForm newsForm = (NewsForm) form;
         News news = new News();
-
+        String id = request.getParameter(ID);
+        if (id != null && !id.isEmpty()) {
+            news.setId(Integer.parseInt(id));
+        }
         news.setContent(newsForm.getContent());
         news.setBrief(newsForm.getBrief());
         news.setTitle(newsForm.getTitle());
         try {
-            news.setDateOfCreation(Utilities.getCalendarFromString(newsForm.getDateOfCreation()));
+            news.setDateOfCreation(Utilities.getCalendarFromString(newsForm.getDateOfCreation(), DATE_FORMAT));
         } catch (UtilException e) {
-            log.error("Fail to save news");
+            log.error(FAIL_TO_SAVE_NEWS);
             return mapping.findForward(FAILURE);
         }
 
