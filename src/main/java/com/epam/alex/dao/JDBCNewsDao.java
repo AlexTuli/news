@@ -247,13 +247,13 @@ public class JDBCNewsDao implements NewsDao {
      * @throws DaoException
      */
     @Override
-    public void delete(News news) {
+    public void delete(Integer id) {
         getConnection();
         PreparedStatement ps;
         try {
             startTransaction();
             ps = connection.prepareStatement(DELETE_QUERY);
-            ps.setInt(1, news.getId());
+            ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
             rollback();

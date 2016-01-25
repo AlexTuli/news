@@ -74,7 +74,6 @@ div.blockRight {
 div.newsBlock {
     clear: both;
     margin: 10px;
-    border: solid black 2px;
 }
 
 div.title {
@@ -97,14 +96,25 @@ div.post-content {
 }
 
 div.links {
-    float: right;
     clear: both;
+    margin: 10px auto;
+    display: table;
+}
+
+
+div.linksViewAll {
+    clear: both;
+    margin: 10px auto;
+    float: right;
 }
 
 div.buttons {
     clear: both;
     margin: 0 auto;
     display: table;
+}
+input {
+    margin: 0 8px;
 }
 
 div.footer {

@@ -13,9 +13,6 @@
     </form-beans>
 
     <action-mappings>
-        <action path="/welcome"
-                type="org.apache.struts.actions.ForwardAction"
-                parameter="/pages/news/view-list-news.jsp"/>
         <action path="/addNews"
                 type="org.apache.struts.actions.ForwardAction"
                 parameter="/pages/news/edit-news.jsp"/>
@@ -43,6 +40,10 @@
         <action path="/viewNews"
                 type="com.epam.alex.action.ViewNews">
             <forward name="success" path="/pages/news/view-news.jsp"/>
+        </action>
+        <action path="/deleteNews"
+                type="com.epam.alex.action.DeleteNews">
+            <forward name="success" path="/viewListNews.do"/>
         </action>
     </action-mappings>
 

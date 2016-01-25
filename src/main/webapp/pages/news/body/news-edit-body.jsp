@@ -42,7 +42,7 @@
     </div>
 <div class="buttons">
     <html:submit style="margin: 0 10px;"><bean:message key="label.news.button.save"/></html:submit>
-    <input type="button" value="<bean:message key="label.news.button.cancel"/>" onclick="window.location = '/'" style="margin: 0 10px;"/>
+    <input type="button" value="<bean:message key="label.news.button.cancel"/>" onclick="window.location = '/'"/>
     <input type="hidden" value="${news.id}" name="id"/>
 </div>
 </div>
