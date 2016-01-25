@@ -32,11 +32,12 @@ public class SaveNews extends ActionSupport {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+        // fixme HERE IS THE PROBLEM
         NewsForm newsForm = (NewsForm) form;
         News news = new News();
         String id = request.getParameter(ID);
         if (id != null && !id.isEmpty()) {
+            log.debug("###ID is " + id);
             news.setId(Integer.parseInt(id));
         }
         news.setContent(newsForm.getContent());

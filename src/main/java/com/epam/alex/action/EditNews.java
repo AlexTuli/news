@@ -21,11 +21,7 @@ public class EditNews extends ActionSupport {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        String sId = request.getParameter(ID);
-//        NewsDao dao = new JDBCNewsDao();
-//        News news = dao.readById(Integer.parseInt(sId));
-//        request.setAttribute(NEWS, news);
-//        return mapping.findForward(SUCCESS);
+
         ViewNews viewNews = new ViewNews();
         return viewNews.execute(mapping, form, request, response);
     }

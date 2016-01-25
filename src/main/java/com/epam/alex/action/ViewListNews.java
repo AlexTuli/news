@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class ViewListNews extends ActionSupport {
 
+
     private static final Logger log = Logger.getLogger(ViewListNews.class);
     private static final String FAILURE = "failure";
     private static final String SUCCESS = "success";
@@ -32,6 +33,7 @@ public class ViewListNews extends ActionSupport {
         List<News> newsList;
         try {
             newsList = newsDao.readAll();
+
         } catch (DaoException e) {
             log.error("Fail in ViewListNews action");
             return mapping.findForward(FAILURE);
