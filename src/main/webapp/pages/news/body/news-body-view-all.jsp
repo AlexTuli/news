@@ -18,5 +18,5 @@
         </div>
     </div>
 </c:forEach>
-    <input class="buttons" type="submit" value="<bean:message key="label.news.body.view.button.delete"/>">
+    <br/><br/><input style="float: right; margin: 5px" class="buttons" type="submit" value="<bean:message key="label.news.body.view.button.delete"/>">
 </form>

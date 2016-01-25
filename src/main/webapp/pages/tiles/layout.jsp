@@ -14,7 +14,7 @@
     <tiles:insert attribute="header"/>
     <tiles:insert attribute="menu"/>
 <div class="body clearfix">
-    <p> News >> <tiles:getAsString name="title" ignore="true"/></p>
+    <p> <bean:message key="label.news.body.news"/> >> <tiles:getAsString name="title" ignore="true"/></p>
     <tiles:insert attribute="body"/>
 </div>
     <tiles:insert attribute="footer"/>

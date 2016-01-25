@@ -45,6 +45,11 @@
                 type="com.epam.alex.action.DeleteNews">
             <forward name="success" path="/viewListNews.do"/>
         </action>
+        <action path="/locale"
+                type="com.epam.alex.action.LanguageSelect"
+                parameter="method">
+            <forward name="success" path="/viewListNews.do"/>
+        </action>
     </action-mappings>
 
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
