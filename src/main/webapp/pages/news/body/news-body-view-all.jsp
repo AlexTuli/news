@@ -10,7 +10,6 @@
         <div class="title"><c:out value="${news.title}"/></div>
         <div class="date"><c:out value="${news.date}"/></div>
         <div class="post-content"><c:out value="${news.content}"/></div>
-        <%--todo have to send id of news with this links--%>
         <div class="linksViewAll">
             <a href="<c:url value="/viewNews.do?id=${news.id}"/>"><bean:message key="label.news.body.view.view"/></a>
             <a href="<c:url value="/editNews.do?id=${news.id}"/>"><bean:message key="label.news.body.view.edit"/></a>

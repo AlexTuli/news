@@ -144,7 +144,6 @@ public class JDBCNewsDao implements NewsDao {
         return result;
     }
 
-    // TODO: 24.01.2016 CHECK THIS
     @Override
     public News readById(Integer id) {
         log.info("Start to read news by ID");
@@ -184,7 +183,6 @@ public class JDBCNewsDao implements NewsDao {
             if (news.getId() == null) {
                 ps = connection.prepareStatement(INSERT_QUERY);
             } else {
-                // TODO: 24.01.2016 CHECK THIS
                 ps = connection.prepareStatement(UPDATE_QUERY);
                 ps.setInt(5, news.getId());
             }
@@ -243,7 +241,7 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Delete row from DB
-     * @param news News that will be deleted
+     * @param id id of the news in DB
      * @throws DaoException
      */
     @Override

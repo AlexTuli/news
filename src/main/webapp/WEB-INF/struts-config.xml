@@ -15,7 +15,7 @@
     <action-mappings>
         <action path="/addNews"
                 type="org.apache.struts.actions.ForwardAction"
-                parameter="/pages/news/edit-news.jsp"/>
+                parameter="editNews"/>
         <action path="/saveNews"
                 type="com.epam.alex.action.SaveNews"
                 name="newsForm"
@@ -29,17 +29,18 @@
                 name="newsForm"
                 validate="false">
             <forward name="success"
-                     path="/pages/news/edit-news.jsp"/>
+                     path="editNews"/>
         </action>
         <action path="/viewListNews"
                 type="com.epam.alex.action.ViewListNews">
-            <forward name="success" path="/pages/news/view-list-news.jsp"/>
+            <!--<forward name="success" path="/pages/news/view-list-news.jsp"/>-->
+            <forward name="success" path="viewListNews"/>
             <forward name="failure" path="/editNews.do"/>
         </action>
 
         <action path="/viewNews"
                 type="com.epam.alex.action.ViewNews">
-            <forward name="success" path="/pages/news/view-news.jsp"/>
+            <forward name="success" path="viewNews"/>
         </action>
         <action path="/deleteNews"
                 type="com.epam.alex.action.DeleteNews">
