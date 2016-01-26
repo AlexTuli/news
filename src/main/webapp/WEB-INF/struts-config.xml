@@ -56,16 +56,18 @@
 
     <message-resources parameter="news"/>
 
-    <!-- Spring Struts plugin -->
+    <!-- Tiles plugin -->
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
     </plug-in>
 
+    <!-- Spring Struts plugin -->
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
         <set-property property="contextConfigLocation"
                       value="/WEB-INF/classes/SpringBeans.xml" />
     </plug-in>
 
+    <!-- Struts validator -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn" >
         <set-property property="pathnames"
                       value="/org/apache/struts/validator/validator-rules.xml, /WEB-INF/validator-news.xml"/>
