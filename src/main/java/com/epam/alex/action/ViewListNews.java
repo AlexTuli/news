@@ -25,6 +25,8 @@ public class ViewListNews extends ActionSupport {
     private static final Logger log = Logger.getLogger(ViewListNews.class);
     private static final String FAILURE = "failure";
     private static final String SUCCESS = "success";
+    private static final String FAIL_IN_VIEW_LIST_NEWS_ACTION = "Fail in ViewListNews action";
+    private static final String NEWS_LIST = "newsList";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -35,10 +37,10 @@ public class ViewListNews extends ActionSupport {
             newsList = newsDao.readAll();
 
         } catch (DaoException e) {
-            log.error("Fail in ViewListNews action");
+            log.error(FAIL_IN_VIEW_LIST_NEWS_ACTION);
             return mapping.findForward(FAILURE);
         }
-        request.setAttribute("newsList", newsList);
+        request.setAttribute(NEWS_LIST, newsList);
 
         return mapping.findForward(SUCCESS);
     }

@@ -18,22 +18,20 @@ import java.util.Locale;
 public class LanguageSelect extends DispatchAction {
 
     private static final String SUCCESS = "success";
-//    private static final String UTF_8 = "utf-8";
+    private static final String RU = "ru";
+    private static final String RU1 = "RU";
 
 
     public ActionForward english(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        request.setCharacterEncoding(UTF_8);
-//        response.setCharacterEncoding(UTF_8);
         request.getSession().setAttribute(
                 Globals.LOCALE_KEY, Locale.ENGLISH);
         return mapping.findForward(SUCCESS);
     }
 
     public ActionForward russian(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        request.setCharacterEncoding(UTF_8);
-//        response.setCharacterEncoding(UTF_8);
+
         request.getSession().setAttribute(
-                Globals.LOCALE_KEY, new Locale("ru", "RU"));
+                Globals.LOCALE_KEY, new Locale(RU, RU1));
         return mapping.findForward(SUCCESS);
     }
 }

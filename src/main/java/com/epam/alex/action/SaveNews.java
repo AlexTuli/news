@@ -36,7 +36,6 @@ public class SaveNews extends ActionSupport {
         News news = new News();
         String id = request.getParameter(ID);
         if (id != null && !id.isEmpty()) {
-            log.debug("###ID is " + id);
             news.setId(Integer.parseInt(id));
         }
         news.setContent(newsForm.getContent());
