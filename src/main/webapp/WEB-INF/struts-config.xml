@@ -20,9 +20,9 @@
                 type="com.epam.alex.action.SaveNews"
                 name="newsForm"
                 validate="true"
-                input="/editNews.do">
+                input="/addNews.do">
             <forward name="success" path="/viewListNews.do"/>
-            <forward name="failure" path="/editNews.do"/>
+            <forward name="failure" path="/addNews.do"/>
         </action>
         <action path="/editNews"
                 type="com.epam.alex.action.EditNews"
@@ -33,7 +33,6 @@
         </action>
         <action path="/viewListNews"
                 type="com.epam.alex.action.ViewListNews">
-            <!--<forward name="success" path="/pages/news/view-list-news.jsp"/>-->
             <forward name="success" path="viewListNews"/>
             <forward name="failure" path="/editNews.do"/>
         </action>
