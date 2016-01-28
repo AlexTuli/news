@@ -1,21 +1,36 @@
 package com.epam.alex.model;
 
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  * Created on 1/20/2016.
  *
  * @author Bocharnikov Alexander
  */
+@Entity
+@Table(name = "NEWS")
 public class News {
 
-    private String title;
-    private String brief;
-    private String content;
+
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "NEWS_ID_SEQ")
+    @SequenceGenerator(name = "NEWS_ID_SEQ", sequenceName = "NEWS_ID_SEQ")
+    @Type(type = "Integer")
     private Integer id;
+
+    private String title;
+
+    private String brief;
+    @Column(name = "POST_CONTENT")
+    private String content;
+
+    @Column(name = "CREATION_DATE")
+    @Type(type = "DATE")
     private Calendar dateOfCreation;
 
     public News() {
