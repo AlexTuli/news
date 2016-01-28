@@ -1,6 +1,7 @@
 package com.epam.alex.dao;
 
 import com.epam.alex.model.News;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,17 +27,24 @@ public class HibernateNewsDao implements  NewsDao{
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Session getSession() {
+    private Session getSession() {
         return sessionFactory.openSession();
     }
+
+
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
+    @SuppressWarnings(value = "unchecked")
     public List<News> readAll() {
-        return null;
+        Session session = getSession();
+        Query query = session.createQuery("from News");
+        List <News> result = query.list();
+        session.close();
+        return result;
     }
 
     @Override

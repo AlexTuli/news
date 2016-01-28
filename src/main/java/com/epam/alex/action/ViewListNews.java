@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.stereotype.Component;
 import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import java.util.List;
  *
  * @author Bocharnikov Alexander
  */
+
 public class ViewListNews extends ActionSupport {
 
 
@@ -31,11 +33,11 @@ public class ViewListNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        NewsDao newsDao = new JDBCNewsDao();
+//        NewsDao newsDao = new JDBCNewsDao();
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         List<News> newsList;
         try {
             newsList = newsDao.readAll();
-
         } catch (DaoException e) {
             log.error(FAIL_IN_VIEW_LIST_NEWS_ACTION);
             return mapping.findForward(FAILURE);

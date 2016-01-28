@@ -3,6 +3,7 @@ package com.epam.alex.action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.stereotype.Component;
 import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Bocharnikov Alexander
  */
+
 public class EditNews extends ActionSupport {
 
     private static final String SUCCESS = "success";
