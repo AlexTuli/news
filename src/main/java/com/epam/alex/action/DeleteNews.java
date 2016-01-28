@@ -1,12 +1,10 @@
 package com.epam.alex.action;
 
-import com.epam.alex.dao.JDBCNewsDao;
 import com.epam.alex.dao.NewsDao;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.springframework.stereotype.Component;
 import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +26,8 @@ public class DeleteNews extends ActionSupport {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        NewsDao newsDao = new JDBCNewsDao();
+//        NewsDao newsDao = new JDBCNewsDao();
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         String[] ids = request.getParameterValues(checkbox);
         log.info(STARTING_TO_DELETE);
         for (String id : ids) {

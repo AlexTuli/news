@@ -31,8 +31,6 @@ public class HibernateNewsDao implements  NewsDao{
         return sessionFactory.openSession();
     }
 
-
-
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -67,6 +65,11 @@ public class HibernateNewsDao implements  NewsDao{
 
     @Override
     public void delete(Integer id) {
-
+        Session session = getSession();
+        Transaction tx = session.beginTransaction();
+        News news = (News) session.get(News.class, id);
+        session.delete(news);
+        tx.commit();
+        session.close();
     }
 }
