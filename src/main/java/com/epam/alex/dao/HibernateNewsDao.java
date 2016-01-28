@@ -19,8 +19,7 @@ import java.util.List;
  *
  * @author Bocharnikov Alexander
  */
-//@Repository
-//@Transactional
+
 @Component (value = "newsDao")
 public class HibernateNewsDao implements  NewsDao{
 
@@ -49,7 +48,11 @@ public class HibernateNewsDao implements  NewsDao{
     public void save(News news) {
         Session session = getSession();
         Transaction tx = session.beginTransaction();
-        session.persist(news);
+        if (news.getId() == null) {
+            session.save(news);
+        } else {
+            session.update(news);
+        }
         tx.commit();
         session.close();
     }
