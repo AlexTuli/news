@@ -17,10 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class EditNews extends ActionSupport {
 
-    private static final String SUCCESS = "success";
-    private static final String ID = "id";
-    private static final String NEWS = "news";
-
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 

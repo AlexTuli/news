@@ -33,7 +33,6 @@ public class ViewListNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-//        NewsDao newsDao = new JDBCNewsDao();
         NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         List<News> newsList;
         try {
