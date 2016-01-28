@@ -16,7 +16,7 @@
         <put name="title" value="Edit news"/>
     </definition>
     <definition name="viewNews" extends="newsTemplate">
-        <put name="title" value="label.news.title.view"/>
+        <put name="title" value="News view"/>
         <put name="body" value="/pages/news/body/news-body-view.jsp"/>
     </definition>
     <definition name="viewListNews" extends="newsTemplate">
