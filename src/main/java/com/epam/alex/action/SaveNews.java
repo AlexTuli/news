@@ -1,5 +1,6 @@
 package com.epam.alex.action;
 
+import com.epam.alex.dao.HibernateNewsDao;
 import com.epam.alex.dao.JDBCNewsDao;
 import com.epam.alex.dao.NewsDao;
 import com.epam.alex.exceptions.UtilException;
@@ -10,6 +11,9 @@ import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *@author Bocharnikov Alexander
  *
  */
+
 public class SaveNews extends ActionSupport {
 
     private static final Logger log = Logger.getLogger(SaveNews.class);
@@ -47,10 +52,9 @@ public class SaveNews extends ActionSupport {
             log.error(FAIL_TO_SAVE_NEWS);
             return mapping.findForward(FAILURE);
         }
-
-        NewsDao newsDao = new JDBCNewsDao();
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         newsDao.save(news);
-
+        log.info(SUCCESS);
         return mapping.findForward(SUCCESS);
     }
 }

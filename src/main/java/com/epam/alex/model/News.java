@@ -20,7 +20,7 @@ public class News {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "NEWS_ID_SEQ")
     @SequenceGenerator(name = "NEWS_ID_SEQ", sequenceName = "NEWS_ID_SEQ")
-    @Type(type = "Integer")
+    @Type(type = "integer")
     private Integer id;
 
     private String title;
@@ -30,7 +30,7 @@ public class News {
     private String content;
 
     @Column(name = "CREATION_DATE")
-    @Type(type = "DATE")
+    @Type(type = "calendar")
     private Calendar dateOfCreation;
 
     public News() {

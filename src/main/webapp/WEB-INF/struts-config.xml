@@ -7,9 +7,7 @@
 
     <form-beans>
         <form-bean name="newsForm"
-                   type="com.epam.alex.form.NewsForm">
-
-        </form-bean>
+                   type="com.epam.alex.form.NewsForm"/>
     </form-beans>
 
     <action-mappings>
@@ -52,7 +50,8 @@
         </action>
     </action-mappings>
 
-    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <!--<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>-->
+    <controller processorClass="org.springframework.web.struts.AutowiringTilesRequestProcessor"/>
 
     <message-resources parameter="news"/>
 
@@ -63,8 +62,7 @@
 
     <!-- Spring Struts plugin -->
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
-        <set-property property="contextConfigLocation"
-                      value="/WEB-INF/classes/SpringBeans.xml" />
+        <set-property property="contextConfigLocation" value="/WEB-INF/spring-config.xml"/>
     </plug-in>
 
     <!-- Struts validator -->
