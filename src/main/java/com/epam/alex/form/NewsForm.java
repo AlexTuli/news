@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Bocharnikov Alexander
  */
-public class NewsForm extends ValidatorForm{
+public class NewsForm extends ValidatorForm {
 
     private News newsMessage;
 

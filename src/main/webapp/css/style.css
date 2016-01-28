@@ -101,7 +101,6 @@ div.links {
     display: table;
 }
 
-
 div.linksViewAll {
     clear: both;
     margin: 10px auto;
@@ -113,6 +112,7 @@ div.buttons {
     margin: 0 auto;
     display: table;
 }
+
 input {
     margin: 0 8px;
 }
@@ -121,9 +121,9 @@ div.footer {
     font-size: medium;
     margin: 10px;
     border: 2px solid black;
-    clear:both;
-    text-align:center;
-    padding:5px;
+    clear: both;
+    text-align: center;
+    padding: 5px;
 }
 
 .clearfix:after {
@@ -134,8 +134,18 @@ div.footer {
     clear: both;
     height: 0;
 }
-.clearfix { display: inline-block; }
+
+.clearfix {
+    display: inline-block;
+}
+
 /* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+
 /* close commented backslash hack */

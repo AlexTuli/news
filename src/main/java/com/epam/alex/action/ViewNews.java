@@ -1,12 +1,10 @@
 package com.epam.alex.action;
 
-import com.epam.alex.dao.JDBCNewsDao;
 import com.epam.alex.dao.NewsDao;
 import com.epam.alex.model.News;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.springframework.stereotype.Component;
 import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;

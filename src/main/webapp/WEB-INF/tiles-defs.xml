@@ -6,7 +6,7 @@
 
 <tiles-definitions>
 
-    <definition name="newsTemplate" template="/pages/tiles/layout.jsp" >
+    <definition name="newsTemplate" template="/pages/tiles/layout.jsp">
         <put name="header" value="/pages/tiles/template/header.jsp"/>
         <put name="menu" value="/pages/tiles/template/menu.jsp"/>
         <put name="footer" value="/pages/tiles/template/footer.jsp"/>

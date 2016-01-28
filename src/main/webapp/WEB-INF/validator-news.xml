@@ -57,7 +57,7 @@
 
                 <arg name="maxlength" key="${var:maxlength}" resource="false" position="0"/>
 
-               <var>
+                <var>
                     <var-name>maxlength</var-name>
                     <var-value>10</var-value>
                 </var>

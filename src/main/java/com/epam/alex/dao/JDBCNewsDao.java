@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -35,7 +34,7 @@ public class JDBCNewsDao implements NewsDao {
     public static final String DELETE_QUERY = "delete NEWS where ID = ?";
     private Connection connection;
 
-    public JDBCNewsDao () {
+    public JDBCNewsDao() {
         try {
             Class.forName(ORACLE_DB_DRIVER);
         } catch (ClassNotFoundException e) {
@@ -47,9 +46,10 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Get connection to DB
+     *
      * @throws DaoException
      */
-    private void getConnection () {
+    private void getConnection() {
         try {
             connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
             log.debug(connection + " was opened.");
@@ -62,9 +62,10 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Close connection to DB
+     *
      * @throws DaoException
      */
-    private void closeConnection () {
+    private void closeConnection() {
         try {
             log.debug(connection + " will be closed");
             connection.close();
@@ -77,9 +78,10 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Start transaction
+     *
      * @throws DaoException
      */
-    private void startTransaction () {
+    private void startTransaction() {
         try {
             connection.setAutoCommit(false);
         } catch (SQLException e) {
@@ -90,9 +92,10 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Rollback changes in transaction and close connection
+     *
      * @throws DaoException
      */
-    private void rollback () {
+    private void rollback() {
         try {
             connection.rollback();
             connection.setAutoCommit(true);
@@ -105,6 +108,7 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Commit changes in DB and close connection
+     *
      * @throws DaoException
      */
     private void commit() {
@@ -120,6 +124,7 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Read all rows from NEWS table
+     *
      * @return List of News
      * @throws DaoException
      */
@@ -170,6 +175,7 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Save news to DB
+     *
      * @param news News
      * @throws DaoException
      */
@@ -209,11 +215,12 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Parse result set and return List of news
+     *
      * @param rs Result Set
      * @return List of News
      * @throws DaoException
      */
-    private List<News> parseResultSet (ResultSet rs) {
+    private List<News> parseResultSet(ResultSet rs) {
         List<News> result = new ArrayList<>();
         try {
             while (rs.next()) {
@@ -241,6 +248,7 @@ public class JDBCNewsDao implements NewsDao {
 
     /**
      * Delete row from DB
+     *
      * @param id id of the news in DB
      * @throws DaoException
      */

@@ -5,12 +5,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,8 +17,8 @@ import java.util.List;
  * @author Bocharnikov Alexander
  */
 
-@Component (value = "newsDao")
-public class HibernateNewsDao implements  NewsDao{
+@Component(value = "newsDao")
+public class HibernateNewsDao implements NewsDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -35,21 +31,38 @@ public class HibernateNewsDao implements  NewsDao{
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * Read all newses from DB
+     *
+     * @return List of News
+     */
     @Override
     @SuppressWarnings(value = "unchecked")
     public List<News> readAll() {
         Session session = getSession();
+        //By some reason IDEA think that it is a mistake here
         Query query = session.createQuery("from News");
-        List <News> result = query.list();
+        List<News> result = query.list();
         session.close();
         return result;
     }
 
+    /**
+     * Read news from DB by id
+     *
+     * @param id - ID of news
+     * @return News
+     */
     @Override
     public News readById(Integer id) {
         return (News) getSession().get(News.class, id);
     }
 
+    /**
+     * Insert new news if news have no ID, else just update
+     *
+     * @param news - news that will be Updated/Inserted
+     */
     @Override
     public void save(News news) {
         Session session = getSession();
@@ -63,10 +76,16 @@ public class HibernateNewsDao implements  NewsDao{
         session.close();
     }
 
+    /**
+     * Delete news from DB
+     *
+     * @param id ID of news
+     */
     @Override
     public void delete(Integer id) {
         Session session = getSession();
         Transaction tx = session.beginTransaction();
+        // If just put news from DB it is not work, need to use this method
         News news = (News) session.get(News.class, id);
         session.delete(news);
         tx.commit();

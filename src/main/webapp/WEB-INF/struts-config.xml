@@ -66,12 +66,11 @@
     </plug-in>
 
     <!-- Struts validator -->
-    <plug-in className="org.apache.struts.validator.ValidatorPlugIn" >
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
         <set-property property="pathnames"
                       value="/org/apache/struts/validator/validator-rules.xml, /WEB-INF/validator-news.xml"/>
 
     </plug-in>
-
 
 
 </struts-config>

@@ -11,12 +11,12 @@
     <title><tiles:getAsString name="title" ignore="true"/></title>
 </head>
 <body>
-    <tiles:insert attribute="header"/>
-    <tiles:insert attribute="menu"/>
+<tiles:insert attribute="header"/>
+<tiles:insert attribute="menu"/>
 <div class="body clearfix">
-    <p> <bean:message key="label.news.body.news"/> >> <tiles:getAsString name="title" ignore="true"/></p>
+    <p><bean:message key="label.news.body.news"/> >> <tiles:getAsString name="title" ignore="true"/></p>
     <tiles:insert attribute="body"/>
 </div>
-    <tiles:insert attribute="footer"/>
+<tiles:insert attribute="footer"/>
 </body>
 </html>

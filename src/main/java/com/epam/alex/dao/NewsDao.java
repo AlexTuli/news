@@ -15,8 +15,8 @@ public interface NewsDao {
 
     News readById(Integer id);
 
-    void save (News news);
+    void save(News news);
 
-    void delete (Integer id);
+    void delete(Integer id);
 
 }
