@@ -23,14 +23,20 @@ public class DeleteNews extends ActionSupport {
     private static final String checkbox = "checkbox";
     private static final String STARTING_TO_DELETE = "Starting to delete.";
     private static final String NEWS_WAS_DELETED = "News was deleted.";
+    private static final String ID = "id";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        NewsDao newsDao = new JDBCNewsDao();
+
         NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         String[] ids = request.getParameterValues(checkbox);
         log.info(STARTING_TO_DELETE);
-        for (String id : ids) {
+        if (ids != null) {
+            for (String id : ids) {
+                newsDao.delete(Integer.parseInt(id));
+            }
+        } else {
+            String id = request.getParameter(ID);
             newsDao.delete(Integer.parseInt(id));
         }
         log.info(NEWS_WAS_DELETED);
