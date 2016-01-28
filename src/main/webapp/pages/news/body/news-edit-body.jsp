@@ -23,6 +23,10 @@
     </div>
     <div class="blockRight">
         <html:text property="dateOfCreation" size="50" maxlength="10" value="${news.date}"/>
+        <script>
+            var locale = navigator.systemLanguage;
+            var date = ${news.date};
+        </script>
     </div>
 </div>
 <div class="block">

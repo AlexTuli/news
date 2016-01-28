@@ -2,6 +2,8 @@ package com.epam.alex.model;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created on 1/20/2016.
