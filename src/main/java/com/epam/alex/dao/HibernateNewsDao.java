@@ -41,7 +41,7 @@ public class HibernateNewsDao implements  NewsDao{
 
     @Override
     public News readById(Integer id) {
-        return null;
+        return (News) getSession().get(News.class, id);
     }
 
     @Override
