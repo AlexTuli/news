@@ -85,8 +85,7 @@ public class HibernateNewsDao implements NewsDao {
     public void delete(Integer id) {
         Session session = getSession();
         Transaction tx = session.beginTransaction();
-        // If just put news from DB it is not work, need to use this method
-        News news = (News) session.get(News.class, id);
+        News news = readById(id);
         session.delete(news);
         tx.commit();
         session.close();
