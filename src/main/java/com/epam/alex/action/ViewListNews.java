@@ -27,11 +27,12 @@ public class ViewListNews extends ActionSupport {
     private static final String SUCCESS = "success";
     private static final String FAIL_IN_VIEW_LIST_NEWS_ACTION = "Fail in ViewListNews action";
     private static final String NEWS_LIST = "newsList";
+    private static final String NEWS_DAO = "newsDao";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
         List<News> newsList;
         try {
             newsList = newsDao.readAll();

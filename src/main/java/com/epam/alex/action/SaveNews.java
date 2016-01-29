@@ -28,6 +28,7 @@ public class SaveNews extends ActionSupport {
     private static final String DATE_FORMAT = "MM/dd/yyyy";
     private static final String ID = "id";
     private static final String FAIL_TO_SAVE_NEWS = "Fail to save news";
+    private static final String NEWS_DAO = "newsDao";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -46,7 +47,7 @@ public class SaveNews extends ActionSupport {
             log.error(FAIL_TO_SAVE_NEWS);
             return mapping.findForward(FAILURE);
         }
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
         newsDao.save(news);
         log.info(SUCCESS);
         return mapping.findForward(SUCCESS);
