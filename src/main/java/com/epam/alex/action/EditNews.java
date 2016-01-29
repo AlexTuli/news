@@ -10,6 +10,7 @@ import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created on 1/22/2016.
@@ -26,13 +27,10 @@ public class EditNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        //todo Figure out how i Can getWebApplicationContext in ViewNews if I Create it from here
         String id = request.getParameter(ID);
         NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
         News news = newsDao.readById(Integer.parseInt(id));
         request.setAttribute(NEWS, news);
         return mapping.findForward(SUCCESS);
-//        ViewNews viewNews = new ViewNews();
-
     }
 }
