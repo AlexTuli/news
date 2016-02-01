@@ -1,0 +1,12 @@
+<!--?xml version="1.0"?-->
+
+
+<hibernate-mapping package="hibernate.entity">
+    <class name="Person" table="T_PERSON">
+        <id name="id" column="ID">
+            <generator class="native">
+            </generator></id>
+        <property name="firstName" column="FIRST_NAME">
+            <property name="lastName" column="LAST_NAME">
+            </property></property></class>
+</hibernate-mapping>

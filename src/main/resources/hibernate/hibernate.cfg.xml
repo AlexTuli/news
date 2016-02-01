@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- DB properties -->
+        <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@//localhost:1521/xe</property>
+        <property name="connection.username">alex</property>
+        <property name="connection.password">qwerty</property>
+        <property name="connection.pool_size">1</property>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+        <!-- Store session in thread -->
+        <property name="current_session_context_class">thread</property>
+
+        <property name="cache.provider_class">org.hibernate.cache.internal.StandardQueryCache</property>
+        <!-- Show sql query in console and format it-->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- If "create" - create tables -->
+        <property name="hbm2ddl.auto">validate</property>
+
+        <!-- XML with mapping of entity -->
+        <mapping resource="/hibernate/news_mapping.hbm.xml">
+        </mapping></session-factory>
+</hibernate-configuration>
