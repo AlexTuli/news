@@ -17,7 +17,7 @@ import java.util.List;
  * @author Bocharnikov Alexander
  */
 
-@Component(value = "newsDao")
+//@Component(value = "newsDao")
 public class HibernateNewsDao implements NewsDao {
 
     @Autowired

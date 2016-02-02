@@ -1,3 +1,4 @@
+/*
 package com.epam.alex.servlet;
 
 import org.hibernate.SessionFactory;
@@ -57,3 +58,4 @@ public class ApplicationConfig {
         return txManager;
     }
 }
+*/

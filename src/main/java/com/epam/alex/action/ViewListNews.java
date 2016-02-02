@@ -1,5 +1,6 @@
 package com.epam.alex.action;
 
+import com.epam.alex.dao.HibernateNewsDao;
 import com.epam.alex.dao.NewsDao;
 import com.epam.alex.exceptions.DaoException;
 import com.epam.alex.model.News;
@@ -32,7 +33,8 @@ public class ViewListNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
+
+        NewsDao newsDao = getWebApplicationContext().getBean(HibernateNewsDao.class);
         List<News> newsList;
         try {
             newsList = newsDao.readAll();

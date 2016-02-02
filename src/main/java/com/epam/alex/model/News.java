@@ -11,26 +11,26 @@ import java.util.Calendar;
  *
  * @author Bocharnikov Alexander
  */
-@Entity
-@Table(name = "NEWS")
+//@Entity
+//@Table(name = "NEWS")
 public class News {
 
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "NEWS_ID_SEQ")
-    @SequenceGenerator(name = "NEWS_ID_SEQ", sequenceName = "NEWS_ID_SEQ")
-    @Type(type = "integer")
+//    @Id
+//    @Column(name = "ID")
+//    @GeneratedValue(strategy = GenerationType.AUTO, generator = "NEWS_ID_SEQ")
+//    @SequenceGenerator(name = "NEWS_ID_SEQ", sequenceName = "NEWS_ID_SEQ")
+//    @Type(type = "integer")
     private Integer id;
 
     private String title;
 
     private String brief;
-    @Column(name = "POST_CONTENT")
+//    @Column(name = "POST_CONTENT")
     private String content;
 
-    @Column(name = "CREATION_DATE")
-    @Type(type = "calendar")
+//    @Column(name = "CREATION_DATE")
+//    @Type(type = "calendar")
     private Calendar dateOfCreation;
 
     public News() {
