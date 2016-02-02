@@ -20,7 +20,7 @@ import java.util.List;
 //@Component(value = "newsDao")
 public class HibernateNewsDao implements NewsDao {
 
-    @Autowired
+//    @Autowired
     private SessionFactory sessionFactory;
 
     private Session getSession() {
@@ -40,7 +40,6 @@ public class HibernateNewsDao implements NewsDao {
     @SuppressWarnings(value = "unchecked")
     public List<News> readAll() {
         Session session = getSession();
-        //By some reason IDEA think that it is a mistake here
         Query query = session.createQuery("from News");
         List<News> result = query.list();
         session.close();

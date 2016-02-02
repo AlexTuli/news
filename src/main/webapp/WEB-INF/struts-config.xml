@@ -62,7 +62,7 @@
 
     <!-- Spring Struts plugin -->
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
-        <set-property property="contextConfigLocation" value="/WEB-INF/classes/SpringBeans.xml"/>
+        <set-property property="contextConfigLocation" value="/WEB-INF/classes/spring4.xml"/>
     </plug-in>
 
     <!-- Struts validator -->
