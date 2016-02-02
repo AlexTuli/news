@@ -1,12 +1,14 @@
-<!--?xml version="1.0"?-->
+<?xml version="1.0" encoding="UTF-8"?>
 
 
-<hibernate-mapping package="hibernate.entity">
-    <class name="Person" table="T_PERSON">
-        <id name="id" column="ID">
-            <generator class="native">
-            </generator></id>
-        <property name="firstName" column="FIRST_NAME">
-            <property name="lastName" column="LAST_NAME">
-            </property></property></class>
+<hibernate-mapping package="com.epam.alex.model">
+    <class name="News" table="NEWS">
+        <id name="id" column="ID" type="integer">
+            <generator class="sequence" />
+        </id>
+        <property name="title" column="TITLE"/>
+        <property name="brief" column="BRIEF"/>
+        <property name="content" column="POST_CONTENT"/>
+        <property name="dateOfCreation" column="CREATION_DATE" type="calendar"/>
+    </class>
 </hibernate-mapping>
