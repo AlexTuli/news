@@ -7,9 +7,9 @@
     <jsp:useBean id="news" scope="request" type="com.epam.alex.model.News"/>
 </c:if>
 
-
+<bean:message key="title.edit"/><br/>
 <html:form action="/saveNews">
-    <div class="error"><html:errors/></div>
+    <div class="error"><html:errors/><br/><c:out value="${error}"/></div>
     <div class="block">
         <div class="blockLeft">
             <bean:message key="label.news.body.view.newsTitle"/>
@@ -24,7 +24,15 @@
             <bean:message key="label.news.body.view.newsDate"/>
         </div>
         <div class="blockRight">
-            <html:text property="dateOfCreation" size="50" maxlength="10" value="${news.date}"/>
+            <p><bean:message key="label.news.body.edit.day"/> : <label>
+                <input type="text" name="day" value="${news.day}">
+            </label>
+                <bean:message key="label.news.body.edit.month"/> : <label>
+                    <input type="text" name="month" value="${news.month}">
+                </label>
+                <bean:message key="label.news.body.edit.year"/> <label>
+                    <input type="text" name="year" value="${news.year}">
+                </label></p>
         </div>
     </div>
     <div class="block">

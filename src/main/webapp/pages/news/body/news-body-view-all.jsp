@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="newsList" scope="request" type="java.util.List"/>
 
+<bean:message key="title.viewall"/> <br/>
 <form action="<c:url value="/deleteNews.do"/>">
     <c:forEach items="${newsList}" var="news">
         <div class="newsBlock">

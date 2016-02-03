@@ -49,9 +49,9 @@
 
             </field>
 
-            <field property="dateOfCreation" depends="required, maxlength, mask">
+            <field property="dateOfCreation" depends="maxlength, mask">
 
-                <msg key="err.news.dateOfCreation.required" name="required"/>
+                <!--<msg key="err.news.dateOfCreation.required" name="required"/>-->
                 <msg key="err.news.dateOfCreation.invalid" name="mask"/>
                 <msg key="err.news.dateOfCreation.length" name="maxlength"/>
 

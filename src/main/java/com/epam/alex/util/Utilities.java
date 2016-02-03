@@ -15,10 +15,18 @@ import java.util.Date;
  */
 public final class Utilities {
 
+    public static final String MM_DD_YYYY_REGEX = "^(([0]\\d)|(1[0-2]))/(([0-2][0-9])|(3[0-1]))/[0-2]\\d{3}$";
+    public static final String YYYY_MM_DD_REGEX = "^[0-2]\\d{3}/(([0-2][0-9])|(3[0-1]))/(([0]\\d)|(1[0-2]))$";
     private static final Logger log = Logger.getLogger(Utilities.class);
+    public static final String YYYY_MM_DD = "yyyy/MM/dd";
+    public static final String MM_DD_YYYY = "MM/dd/yyyy";
 
 
     public static Calendar getCalendarFromString(String date, String stringFormat) {
+        if (!validateDate(date, stringFormat)) {
+            log.error("Wrong date format");
+            throw new UtilException("Wrong date format");
+        }
         Calendar result = Calendar.getInstance();
         try {
             SimpleDateFormat format = new SimpleDateFormat(stringFormat);
@@ -31,4 +39,16 @@ public final class Utilities {
         return result;
     }
 
+    private static boolean validateDate(String date, String format) {
+        switch (format) {
+            case YYYY_MM_DD:
+                return date.matches(YYYY_MM_DD_REGEX);
+            case MM_DD_YYYY:
+                return date.matches(MM_DD_YYYY_REGEX);
+            default:
+                return false;
+
+        }
+
+    }
 }

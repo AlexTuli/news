@@ -1,8 +1,5 @@
 package com.epam.alex.model;
 
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
 import java.util.Calendar;
 
 
@@ -16,7 +13,7 @@ import java.util.Calendar;
 public class News {
 
 
-//    @Id
+    //    @Id
 //    @Column(name = "ID")
 //    @GeneratedValue(strategy = GenerationType.AUTO, generator = "NEWS_ID_SEQ")
 //    @SequenceGenerator(name = "NEWS_ID_SEQ", sequenceName = "NEWS_ID_SEQ")
@@ -26,10 +23,10 @@ public class News {
     private String title;
 
     private String brief;
-//    @Column(name = "POST_CONTENT")
+    //    @Column(name = "POST_CONTENT")
     private String content;
 
-//    @Column(name = "CREATION_DATE")
+    //    @Column(name = "CREATION_DATE")
 //    @Type(type = "calendar")
     private Calendar dateOfCreation;
 
@@ -79,6 +76,18 @@ public class News {
 
     public String getDate() {
         return String.format("%tm/%td/%tY", dateOfCreation, dateOfCreation, dateOfCreation);
+    }
+
+    public String getDay() {
+        return String.format("%td", dateOfCreation);
+    }
+
+    public String getMonth() {
+        return String.format("%tm", dateOfCreation);
+    }
+
+    public String getYear() {
+        return String.format("%tY", dateOfCreation);
     }
 
     public Calendar getDateOfCreation() {

@@ -32,6 +32,10 @@
         <javaee.version>7.0</javaee.version>
         <!-- Hibernate-->
         <hibernate.version>4.3.5.Final</hibernate.version>
+        <!-- Junit -->
+        <junit.version>4.12</junit.version>
+
+        <apache.taglib.version>1.2.5</apache.taglib.version>
     </properties>
 
     <build>
@@ -164,11 +168,16 @@
             <version>${jstl.version}</version>
         </dependency>
 
-         <dependency>
+        <dependency>
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard-impl</artifactId>
-            <version>1.2.5</version>
+            <version>${apache.taglib.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
     </dependencies>
 </project>

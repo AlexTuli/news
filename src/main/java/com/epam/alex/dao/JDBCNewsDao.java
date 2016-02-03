@@ -22,16 +22,17 @@ public class JDBCNewsDao implements NewsDao {
     private static final String USER_NAME = "alex";
     private static final String PASSWORD = "qwerty";
     private static final String URL = "jdbc:oracle:thin:@//localhost:1521/XE";
-    private static final String INSERT_QUERY = "insert into NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) values (?, ?, ?, to_date (? , 'MM/dd/yyyy'))";
-    private static final String UPDATE_QUERY = "update NEWS SET\n" +
+    private static final String INSERT_QUERY = "INSERT INTO NEWS (TITLE, BRIEF, POST_CONTENT, CREATION_DATE) VALUES (?, ?, ?, to_date (? , 'MM/dd/yyyy'))";
+    private static final String UPDATE_QUERY = "UPDATE NEWS SET\n" +
             "TITLE = ?,\n" +
             "BRIEF = ?,\n" +
             "POST_CONTENT = ?,\n" +
             "CREATION_DATE = (to_date (? , 'MM/dd/yyyy'))\n" +
-            "where ID = ?";
-    private static final String READ_ALL_QUERY = "select * from NEWS";
-    public static final String READ_BY_ID_QUERY = "select * from NEWS where ID = ?";
-    public static final String DELETE_QUERY = "delete NEWS where ID = ?";
+            "WHERE ID = ?";
+    private static final String READ_ALL_QUERY = "SELECT * FROM NEWS";
+    public static final String READ_BY_ID_QUERY = "SELECT * FROM NEWS WHERE ID = ?";
+    public static final String DELETE_QUERY = "DELETE NEWS WHERE ID = ?";
+    public static final String YYYY_MM_DD = "yyyy/MM/dd";
     private Connection connection;
 
     public JDBCNewsDao() {
@@ -235,7 +236,7 @@ public class JDBCNewsDao implements NewsDao {
                 String date = rs.getString(5);
                 date = date.substring(0, 11);
                 date = date.replace('-', '/');
-                news.setDateOfCreation(Utilities.getCalendarFromString(date, "yyyy/MM/dd"));
+                news.setDateOfCreation(Utilities.getCalendarFromString(date, YYYY_MM_DD));
                 news.setId(id);
                 result.add(news);
             }

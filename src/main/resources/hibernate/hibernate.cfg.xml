@@ -24,5 +24,6 @@
 
         <!-- XML with mapping of entity -->
         <mapping resource="/hibernate/news_mapping.hbm.xml">
-        </mapping></session-factory>
+        </mapping>
+    </session-factory>
 </hibernate-configuration>

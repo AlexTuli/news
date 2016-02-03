@@ -13,6 +13,8 @@ import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Calendar;
+import java.util.ResourceBundle;
 
 /**
  * Created on 21.01.2016.
@@ -27,29 +29,54 @@ public class SaveNews extends ActionSupport {
     private static final String FAILURE = "failure";
     private static final String DATE_FORMAT = "MM/dd/yyyy";
     private static final String ID = "id";
-    private static final String FAIL_TO_SAVE_NEWS = "Fail to save news";
     private static final String NEWS_DAO = "newsDao";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        NewsForm newsForm = (NewsForm) form;
+
+
+        News news = extractNews((NewsForm) form, request);
+
+        if (news == null) {
+            return mapping.findForward(FAILURE);
+        }
+
+        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
+        newsDao.save(news);
+
+        log.info(SUCCESS);
+
+        return mapping.findForward(SUCCESS);
+    }
+
+    private News extractNews(NewsForm form, HttpServletRequest request) {
         News news = new News();
         String id = request.getParameter(ID);
         if (id != null && !id.isEmpty()) {
             news.setId(Integer.parseInt(id));
         }
-        news.setContent(newsForm.getContent());
-        news.setBrief(newsForm.getBrief());
-        news.setTitle(newsForm.getTitle());
+        news.setContent(form.getContent());
+        news.setBrief(form.getBrief());
+        news.setTitle(form.getTitle());
+        StringBuilder date = getDate(request);
+        Calendar dateOfCreation;
         try {
-            news.setDateOfCreation(Utilities.getCalendarFromString(newsForm.getDateOfCreation(), DATE_FORMAT));
+            dateOfCreation = Utilities.getCalendarFromString(date.toString(), DATE_FORMAT);
         } catch (UtilException e) {
-            log.error(FAIL_TO_SAVE_NEWS);
-            return mapping.findForward(FAILURE);
+            ResourceBundle bundle = ResourceBundle.getBundle("news", getLocale(request));
+            request.setAttribute("error", bundle.getString("err.news.dateOfCreation.invalid"));
+            request.setAttribute("news", news);
+            log.error("Can't parse date");
+            return null;
         }
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
-        newsDao.save(news);
-        log.info(SUCCESS);
-        return mapping.findForward(SUCCESS);
+        news.setDateOfCreation(dateOfCreation);
+        return news;
+    }
+
+    private StringBuilder getDate(HttpServletRequest request) {
+        StringBuilder date = new StringBuilder(request.getParameter("month"));
+        date.append('/').append(request.getParameter("day"));
+        date.append('/').append(request.getParameter("year"));
+        return date;
     }
 }

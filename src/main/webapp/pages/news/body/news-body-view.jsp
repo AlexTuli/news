@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="news" scope="request" type="com.epam.alex.model.News"/>
 
-
+<bean:message key="title.view"/><br/>
 <div class="block">
     <div class="blockLeft"><bean:message key="label.news.body.view.newsTitle"/></div>
     <div class="blockRight"><c:out value="${news.title}"/></div>
