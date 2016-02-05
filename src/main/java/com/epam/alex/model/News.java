@@ -13,8 +13,6 @@ import java.util.Calendar;
  *
  * @author Bocharnikov Alexander
  */
-//@Entity
-//@Table(name = "NEWS")
 @Data
 @NoArgsConstructor
 public class News {
