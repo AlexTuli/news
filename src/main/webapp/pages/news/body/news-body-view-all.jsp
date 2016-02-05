@@ -10,7 +10,7 @@
         <div class="newsBlock">
             <div class="title"><c:out value="${news.title}"/></div>
             <div class="date"><c:out value="${news.date}"/></div>
-            <div class="post-content"><c:out value="${news.content}"/></div>
+            <div class="brief"><c:out value="${news.brief}"/></div>
             <div class="linksViewAll">
                 <a href="<c:url value="/viewNews.do?id=${news.id}"/>"><bean:message
                         key="label.news.body.view.view"/></a>
