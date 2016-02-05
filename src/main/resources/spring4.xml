@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- Data source definition -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
@@ -30,8 +31,9 @@
         </property>
     </bean>
 
-
+    <!-- Hibernate Dao bean -->
     <bean id="newsDao" class="com.epam.alex.dao.HibernateNewsDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+
 </beans>

@@ -25,7 +25,6 @@ public class ViewNews extends ActionSupport {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         String id = request.getParameter(ID);
         NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
         News news = newsDao.readById(Integer.parseInt(id));

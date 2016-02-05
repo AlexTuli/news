@@ -5,6 +5,7 @@ import com.epam.alex.dao.NewsDao;
 import com.epam.alex.exceptions.DaoException;
 import com.epam.alex.model.News;
 import org.apache.log4j.Logger;
+import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -26,24 +27,31 @@ public class ViewListNews extends ActionSupport {
     private static final Logger log = Logger.getLogger(ViewListNews.class);
     private static final String FAILURE = "failure";
     private static final String SUCCESS = "success";
-    private static final String FAIL_IN_VIEW_LIST_NEWS_ACTION = "Fail in ViewListNews action";
     private static final String NEWS_LIST = "newsList";
-    private static final String NEWS_DAO = "newsDao";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+        setLocale(request);
+        if (readNewsList(request)) return mapping.findForward(FAILURE);
+        return mapping.findForward(SUCCESS);
+    }
 
+    private boolean readNewsList(HttpServletRequest request) {
         NewsDao newsDao = getWebApplicationContext().getBean(HibernateNewsDao.class);
         List<News> newsList;
         try {
             newsList = newsDao.readAll();
         } catch (DaoException e) {
-            log.error(FAIL_IN_VIEW_LIST_NEWS_ACTION);
-            return mapping.findForward(FAILURE);
+            log.error("Fail in ViewListNews action");
+            return true;
         }
         request.setAttribute(NEWS_LIST, newsList);
+        return false;
+    }
 
-        return mapping.findForward(SUCCESS);
+    private void setLocale(HttpServletRequest request) {
+        // todo fix it
+        request.getSession().setAttribute(Globals.LOCALE_KEY, getLocale(request));
     }
 }

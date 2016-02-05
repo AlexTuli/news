@@ -1,5 +1,6 @@
 package com.epam.alex.action;
 
+import com.epam.alex.dao.HibernateNewsDao;
 import com.epam.alex.dao.NewsDao;
 import com.epam.alex.model.News;
 import org.apache.struts.action.ActionForm;
@@ -21,13 +22,11 @@ public class EditNews extends ActionSupport {
     private static final String ID = "id";
     private static final String SUCCESS = "success";
     private static final String NEWS = "news";
-    private static final String NEWS_DAO = "newsDao";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         String id = request.getParameter(ID);
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
+        NewsDao newsDao = getWebApplicationContext().getBean(HibernateNewsDao.class);
         News news = newsDao.readById(Integer.parseInt(id));
         request.setAttribute(NEWS, news);
         return mapping.findForward(SUCCESS);

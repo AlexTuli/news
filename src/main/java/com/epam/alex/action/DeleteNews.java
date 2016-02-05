@@ -1,5 +1,6 @@
 package com.epam.alex.action;
 
+import com.epam.alex.dao.HibernateNewsDao;
 import com.epam.alex.dao.NewsDao;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
@@ -28,7 +29,7 @@ public class DeleteNews extends ActionSupport {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean("newsDao");
+        NewsDao newsDao = getWebApplicationContext().getBean(HibernateNewsDao.class);
         String[] ids = request.getParameterValues(checkbox);
         log.info(STARTING_TO_DELETE);
         if (ids != null) {

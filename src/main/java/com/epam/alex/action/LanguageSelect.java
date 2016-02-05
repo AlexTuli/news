@@ -24,15 +24,12 @@ public class LanguageSelect extends DispatchAction {
 
 
     public ActionForward english(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.getSession().setAttribute(
-                Globals.LOCALE_KEY, Locale.ENGLISH);
+        request.getSession().setAttribute(Globals.LOCALE_KEY, Locale.ENGLISH);
         return mapping.findForward(SUCCESS);
     }
 
     public ActionForward russian(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        request.getSession().setAttribute(
-                Globals.LOCALE_KEY, new Locale(RU, RU1));
+        request.getSession().setAttribute(Globals.LOCALE_KEY, new Locale(RU, RU1));
         return mapping.findForward(SUCCESS);
     }
 }

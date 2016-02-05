@@ -1,5 +1,6 @@
 package com.epam.alex.action;
 
+import com.epam.alex.dao.HibernateNewsDao;
 import com.epam.alex.dao.NewsDao;
 import com.epam.alex.exceptions.UtilException;
 import com.epam.alex.form.NewsForm;
@@ -29,23 +30,15 @@ public class SaveNews extends ActionSupport {
     private static final String FAILURE = "failure";
     private static final String DATE_FORMAT = "MM/dd/yyyy";
     private static final String ID = "id";
-    private static final String NEWS_DAO = "newsDao";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-
         News news = extractNews((NewsForm) form, request);
-
         if (news == null) {
             return mapping.findForward(FAILURE);
         }
-
-        NewsDao newsDao = (NewsDao) getWebApplicationContext().getBean(NEWS_DAO);
+        NewsDao newsDao = getWebApplicationContext().getBean(HibernateNewsDao.class);
         newsDao.save(news);
-
-        log.info(SUCCESS);
-
         return mapping.findForward(SUCCESS);
     }
 
@@ -63,14 +56,18 @@ public class SaveNews extends ActionSupport {
         try {
             dateOfCreation = Utilities.getCalendarFromString(date.toString(), DATE_FORMAT);
         } catch (UtilException e) {
-            ResourceBundle bundle = ResourceBundle.getBundle("news", getLocale(request));
-            request.setAttribute("error", bundle.getString("err.news.dateOfCreation.invalid"));
+            setErrorToRequest(request);
             request.setAttribute("news", news);
             log.error("Can't parse date");
             return null;
         }
         news.setDateOfCreation(dateOfCreation);
         return news;
+    }
+
+    private void setErrorToRequest(HttpServletRequest request) {
+        ResourceBundle bundle = ResourceBundle.getBundle("news", getLocale(request));
+        request.setAttribute("error", bundle.getString("err.news.dateOfCreation.invalid"));
     }
 
     private StringBuilder getDate(HttpServletRequest request) {

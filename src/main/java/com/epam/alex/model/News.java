@@ -1,5 +1,7 @@
 package com.epam.alex.model;
 
+
+import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 
 
@@ -18,16 +20,20 @@ public class News {
 //    @GeneratedValue(strategy = GenerationType.AUTO, generator = "NEWS_ID_SEQ")
 //    @SequenceGenerator(name = "NEWS_ID_SEQ", sequenceName = "NEWS_ID_SEQ")
 //    @Type(type = "integer")
-    private Integer id;
 
+    private Integer id;
+    @NotNull
     private String title;
 
+    @NotNull
     private String brief;
     //    @Column(name = "POST_CONTENT")
+    @NotNull
     private String content;
 
     //    @Column(name = "CREATION_DATE")
 //    @Type(type = "calendar")
+    @NotNull
     private Calendar dateOfCreation;
 
     public News() {
