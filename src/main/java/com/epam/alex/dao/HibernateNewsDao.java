@@ -1,10 +1,8 @@
 package com.epam.alex.dao;
 
 import com.epam.alex.model.News;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -38,8 +36,9 @@ public class HibernateNewsDao implements NewsDao {
     @SuppressWarnings(value = "unchecked")
     public List<News> readAll() {
         Session session = getSession();
-        Query query = session.createQuery("from News");
-        List<News> result = query.list();
+        Criteria cr = session.createCriteria(News.class);
+        cr.add(Restrictions.isNotNull("id"));
+        List<News> result = cr.list();
         session.close();
         return result;
     }
