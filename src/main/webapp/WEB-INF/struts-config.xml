@@ -11,6 +11,11 @@
     </form-beans>
 
     <action-mappings>
+        <action path="/welcome"
+                type="com.epam.alex.action.Welcome">
+            <forward name="success"
+                     path="/viewListNews.do"/>
+        </action>
         <action path="/addNews"
                 type="org.apache.struts.actions.ForwardAction"
                 parameter="editNews"/>

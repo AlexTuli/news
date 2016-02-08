@@ -17,6 +17,7 @@
     <bean:message key="label.news.body.news"/> >>
     <tiles:insert attribute="body"/>
 </div>
-<tiles:insert attribute="footer"/>
+
 </body>
+<tiles:insert attribute="footer"/>
 </html>

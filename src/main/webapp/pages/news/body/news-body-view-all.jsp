@@ -7,7 +7,7 @@
 <bean:message key="title.viewall"/> <br/>
 <form action="<c:url value="/deleteNews.do"/>">
     <c:forEach items="${newsList}" var="news">
-        <div class="newsBlock">
+        <div class="newsBlock clearfix">
             <div class="title"><c:out value="${news.title}"/></div>
             <div class="date"><c:out value="${news.date}"/></div>
             <div class="brief"><c:out value="${news.brief}"/></div>

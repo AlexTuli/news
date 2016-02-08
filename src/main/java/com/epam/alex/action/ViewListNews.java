@@ -14,6 +14,7 @@ import org.springframework.web.struts.ActionSupport;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created on 1/22/2016.
@@ -31,8 +32,6 @@ public class ViewListNews extends ActionSupport {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        setLocale(request);
         if (readNewsList(request)) return mapping.findForward(FAILURE);
         return mapping.findForward(SUCCESS);
     }
@@ -48,10 +47,5 @@ public class ViewListNews extends ActionSupport {
         }
         request.setAttribute(NEWS_LIST, newsList);
         return false;
-    }
-
-    private void setLocale(HttpServletRequest request) {
-        // todo fix it
-        request.getSession().setAttribute(Globals.LOCALE_KEY, getLocale(request));
     }
 }

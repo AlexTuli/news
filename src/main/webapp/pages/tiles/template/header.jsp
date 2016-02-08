@@ -7,8 +7,8 @@
 <div class="header clearfix">
     <p class="header-title"><bean:message key="label.news.header.title"/></p>
     <p class="header2">
-        <a href="<c:url value="/locale.do?method=english"/>"><bean:message key="label.news.header.lang.english"/></a>
-        <a href="<c:url value="/locale.do?method=russian"/>"><bean:message key="label.news.header.lang.russian"/></a>
+        <a class="special" href="<c:url value="/locale.do?method=english"/>"><bean:message key="label.news.header.lang.english"/></a>
+        <a class="special" href="<c:url value="/locale.do?method=russian"/>"><bean:message key="label.news.header.lang.russian"/></a>
     </p>
 </div>
 

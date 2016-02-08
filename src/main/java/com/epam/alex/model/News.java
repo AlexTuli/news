@@ -26,9 +26,10 @@ public class News {
     private String content;
     @NotNull
     private Calendar dateOfCreation;
+//    %tm/%td/%tY
 
     public String getDate() {
-        return String.format("%tm/%td/%tY", dateOfCreation, dateOfCreation, dateOfCreation);
+        return String.format("%tm - %tB - %tY", dateOfCreation, dateOfCreation, dateOfCreation);
     }
 
     public String getDay() {
