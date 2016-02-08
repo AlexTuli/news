@@ -57,6 +57,7 @@ public class SaveNews extends ActionSupport {
             dateOfCreation = Utilities.getCalendarFromString(date.toString(), DATE_FORMAT);
         } catch (UtilException e) {
             setErrorToRequest(request);
+            //I decide to set current date if author enter wrong date.
             news.setDateOfCreation(Calendar.getInstance());
             request.setAttribute("news", news);
             log.error("Can't parse date");
