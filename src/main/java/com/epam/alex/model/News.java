@@ -1,11 +1,13 @@
 package com.epam.alex.model;
 
 
+import com.epam.alex.action.GetLocale;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 /**
@@ -26,10 +28,10 @@ public class News {
     private String content;
     @NotNull
     private Calendar dateOfCreation;
-//    %tm/%td/%tY
 
     public String getDate() {
-        return String.format("%tm - %tB - %tY", dateOfCreation, dateOfCreation, dateOfCreation);
+
+        return String.format(GetLocale.getCurrentLocale(), "%tm - %tB - %tY", dateOfCreation, dateOfCreation, dateOfCreation);
     }
 
     public String getDay() {

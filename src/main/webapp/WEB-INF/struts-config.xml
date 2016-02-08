@@ -11,10 +11,14 @@
     </form-beans>
 
     <action-mappings>
+        <action path="/setLocale"
+                type="com.epam.alex.action.GetLocale">
+            <forward name="success" path="/viewListNews.do"/>
+        </action>
         <action path="/welcome"
                 type="com.epam.alex.action.Welcome">
             <forward name="success"
-                     path="/viewListNews.do"/>
+                     path="/setLocale.do"/>
         </action>
         <action path="/addNews"
                 type="org.apache.struts.actions.ForwardAction"
@@ -51,7 +55,7 @@
         <action path="/locale"
                 type="com.epam.alex.action.LanguageSelect"
                 parameter="method">
-            <forward name="success" path="/viewListNews.do"/>
+            <forward name="success" path="/setLocale.do"/>
         </action>
     </action-mappings>
 
