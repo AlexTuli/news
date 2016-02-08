@@ -13,11 +13,9 @@ a.special:hover {
 }
 
 div.header {
-    /*border: 2px solid black;*/
     background-color: dimgray;
     color: springgreen;
     font-family: Tahoma, serif;
-    /*margin: 10px;*/
     padding: 10px;
     clear: both;
 
@@ -44,7 +42,6 @@ p.header2 {
 div.menu {
     background-color: lightskyblue;
     min-width: 20px;
-    /*margin: 10px;*/
     width: 20%;
     float: left;
     font-family: "Eras Bold ITC", serif;
@@ -65,9 +62,7 @@ ul.list {
 }
 
 div.body {
-    /*margin: 10px;*/
     width: 80%;
-    /*border: 2px solid gray;*/
     float: right;
     background-color: #ffeba2;
     font-family: "Eras Bold ITC", serif;
@@ -104,7 +99,7 @@ div.blockRight {
 div.newsBlock {
     background-color: azure;
     clear: both;
-    margin: 10px;
+    margin: 20px;
 }
 
 div.title {
@@ -149,9 +144,6 @@ input {
 }
 
 div.footer {
-    /*margin: 10px;*/
-    /*border: 2px solid black;*/
-    /*width: 100%;*/
     clear: both;
     text-align: center;
     padding: 15px;
@@ -174,7 +166,6 @@ div.footer {
     display: inline-block;
 }
 
-/* start commented backslash hack \*/
 * html .clearfix {
     height: 1%;
 }
@@ -183,4 +174,3 @@ div.footer {
     display: block;
 }
 
-/* close commented backslash hack */
