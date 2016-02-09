@@ -7,8 +7,10 @@
     <p class="middle"><bean:message key="label.news.menu.title"/></p>
 
     <ul class="list">
-        <li><a name="add-news" href="<c:url value="/addNews.do"/>"><bean:message key="label.news.menu.addNews"/></a></li>
-        <li><a name="list-news" href="<c:url value="/viewListNews.do"/>"><bean:message key="label.news.menu.listNews"/></a></li>
+        <li><a name="add-news" href="<c:url value="/addNews.do"/>"><bean:message key="label.news.menu.addNews"/></a>
+        </li>
+        <li><a name="list-news" href="<c:url value="/viewListNews.do"/>"><bean:message
+                key="label.news.menu.listNews"/></a></li>
     </ul>
 
 </div>

@@ -1,7 +1,10 @@
 package com.epam.alex.dao;
 
 import com.epam.alex.model.News;
-import org.hibernate.*;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;

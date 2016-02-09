@@ -29,6 +29,7 @@ public class GetLocale extends ActionSupport {
     public static Locale getCurrentLocale() {
         if (currentLocale != null) {
             return currentLocale;
-        } return Locale.getDefault();
+        }
+        return Locale.getDefault();
     }
 }

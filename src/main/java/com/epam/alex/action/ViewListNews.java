@@ -5,7 +5,6 @@ import com.epam.alex.dao.NewsDao;
 import com.epam.alex.exceptions.DaoException;
 import com.epam.alex.model.News;
 import org.apache.log4j.Logger;
-import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.struts.ActionSupport;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created on 1/22/2016.

@@ -1,6 +1,7 @@
 a:visited {
     color: tomato;
 }
+
 a:link {
     color: tomato;
 }
@@ -8,6 +9,7 @@ a:link {
 a:hover {
     color: darkgreen;
 }
+
 a.special:hover {
     color: #ffeba2;
 }

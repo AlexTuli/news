@@ -1,13 +1,9 @@
 import org.apache.log4j.Logger;
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertTrue;
 
@@ -44,7 +40,7 @@ public class AddNewsSeleniumTest {
     }
 
     private static boolean addNews() {
-        WebDriver firefox =  new FirefoxDriver();
+        WebDriver firefox = new FirefoxDriver();
         firefox.get(TEST_URL);
         WebElement link = firefox.findElement(By.linkText(ADD_NEWS_LINK));
         link.click();
