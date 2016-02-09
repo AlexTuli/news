@@ -1,3 +1,6 @@
+import org.apache.log4j.Logger;
+import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.junit.Assert.assertTrue;
 
 
 /**
@@ -15,6 +20,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class AddNewsSeleniumTest {
 
+    private static final Logger log = Logger.getLogger(AddNewsSeleniumTest.class);
     public static final String TEST_URL = "http://localhost:8000";
     public static final String ADD_NEWS_LINK = "Add News";
     public static final String NEWS_FORM = "newsForm";
@@ -25,8 +31,19 @@ public class AddNewsSeleniumTest {
     public static final String MONTH = "month";
     public static final String YEAR = "year";
 
-    public static void main(String[] args) {
+    @Test
+    public void testAddNews() throws Exception {
+        boolean result = false;
+        try {
+            result = addNews();
+        } catch (Exception ignored) {
+            log.error("Test failed");
+        }
+        assertTrue(result);
 
+    }
+
+    private static boolean addNews() {
         WebDriver firefox =  new FirefoxDriver();
         firefox.get(TEST_URL);
         WebElement link = firefox.findElement(By.linkText(ADD_NEWS_LINK));
@@ -46,5 +63,6 @@ public class AddNewsSeleniumTest {
         year.sendKeys("2016");
         newsForm.submit();
         firefox.close();
+        return true;
     }
 }
