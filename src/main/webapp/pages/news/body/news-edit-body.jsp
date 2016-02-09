@@ -30,7 +30,7 @@
                 <bean:message key="label.news.body.edit.month"/> : <label>
                     <input type="text" name="month" value="${news.month}">
                 </label>
-                <bean:message key="label.news.body.edit.year"/> <label>
+                <bean:message key="label.news.body.edit.year"/> : <label>
                     <input type="text" name="year" value="${news.year}">
                 </label></p>
         </div>

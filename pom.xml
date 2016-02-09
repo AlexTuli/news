@@ -38,7 +38,8 @@
         <lombok.version>1.16.6</lombok.version>
         <apache.taglib.version>1.2.5</apache.taglib.version>
         <!-- Selenium -->
-        <selenium.version>2.17.0</selenium.version>
+        <selenium.version>2.51.0</selenium.version>
+        <xml.apis.version>1.4.01</xml.apis.version>
     </properties>
 
     <build>
@@ -195,5 +196,17 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <!-- Without it selenium does't work -->
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>${xml.apis.version}</version>
+        </dependency>
+
     </dependencies>
 </project>
