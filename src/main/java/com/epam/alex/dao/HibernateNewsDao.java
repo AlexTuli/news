@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ import java.util.List;
  * @author Bocharnikov Alexander
  */
 
-//@Component(value = "newsDao")
+
+@Component(value = "newsDao")
 public class HibernateNewsDao implements NewsDao {
 
     //    @Autowired

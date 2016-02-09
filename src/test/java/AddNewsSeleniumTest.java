@@ -1,4 +1,5 @@
 import org.apache.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,7 @@ public class AddNewsSeleniumTest {
     public static final String YEAR = "year";
 
     @Test
+    @Ignore
     public void testAddNews() throws Exception {
         boolean result = false;
         try {
