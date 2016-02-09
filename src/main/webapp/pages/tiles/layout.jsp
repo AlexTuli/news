@@ -18,6 +18,6 @@
     <tiles:insert attribute="body"/>
 </div>
 
-</body>
 <tiles:insert attribute="footer"/>
+</body>
 </html>
